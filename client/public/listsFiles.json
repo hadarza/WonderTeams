@@ -1,0 +1,40 @@
+{
+    "Info":[
+       
+       {
+          "href":"https://www.google.com/",
+          "title":"מידע חדש למצטרפים"
+       },
+       {
+          "href":"Hebet",
+          "title":"אודות הבט"
+       }
+    ],
+
+    "Animate":[
+        {
+            "href":"../client/src/Assets/Try.pptx",
+            "title":"איך נלמד אניימט בעצמנו"
+         },
+         {
+            "href":"Python",
+            "title":"יצירת פרויקט באניימט"
+         }
+    ],
+    "Storyline":[
+        {
+            "href":"Pascal",
+            "title":"Storyline"
+         },
+         {
+            "href":"Python",
+            "title":"אנימציות בסטורליין"
+         }
+    ],
+    "Web":[
+        {
+            "href":"Web",
+            "title":"Web"
+         }
+    ]
+ }

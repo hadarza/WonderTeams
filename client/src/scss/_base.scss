@@ -1,0 +1,28 @@
+/*contains all the resets, variables, mixins, and utility classes*/
+$font-family: 'Noto Sans Hebrew';
+$font-family-english: 'Smooch Sans';
+/*colors*/
+$background: #6d7077;
+$gray: #6b7688;
+$grey_folder: #F2F2F2;
+$lighten_gray: #eff0f2;
+$gray_hover : #000000;
+$red : #d70226;
+$purple: #6968be;
+$purple_hover : #a4b8f7;
+$pink: rgb(238, 74, 123);
+$white : #FFFFFF;
+$black: #000000;
+$light_gray: #e4e4e4;
+
+// COLORS
+$softorange: #F4A259;
+$tomatored: #F25C66;
+$mediumblu: #1E272D;
+
+
+@mixin flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

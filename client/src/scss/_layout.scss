@@ -1,0 +1,487 @@
+*{
+    direction: rtl;
+    user-select: none;
+}
+
+.login-section{
+    background-color: $white;
+    box-shadow: #00000059 0px 5px 15px;
+    border-radius: 10px;
+    width:65rem;
+    height:40rem;
+    position:absolute;
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+    margin: auto;
+    display: flex;
+}
+
+.form-login{
+    @include flex;
+    flex-direction: column;
+}
+
+.section__Login{
+    height:100%;
+    flex:1;
+    background: #f8f8ff;
+    border-radius: 15px;
+}
+.section__info{
+    border-radius: 30px 0px 0px 30px;
+    height:100%;
+    @include flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    .login__background{
+        width:50%;
+        height:80%;
+        position: absolute;
+        top:0vh;
+        left:0vw;
+        border-radius: 8px;
+    }
+    h1{
+        color: black;
+        font-weight: 600 !important;
+        padding: 4rem 2rem;
+        font-size: 2rem;
+        text-align: center;
+    }
+    p,h2{
+        color: black;
+    }
+    h2{
+        margin-bottom: 0.5rem;
+    }
+}
+
+.line{
+    width:4rem;
+    height:0.01rem;
+    
+    border-top: 0.1rem solid $white;
+}
+
+.icon{
+    color: black;
+    font-size: 1.5rem;
+    padding-left: 1rem;
+    padding-top: 0.2rem;
+}
+
+.login-title{
+    padding: 1rem 2rem;
+}
+
+.h5-info-form{
+    color:red;
+    text-align: right;
+    margin-right: 3rem;
+}
+
+.Form__section__login{
+    @include flex;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+
+.errorSection{
+    height:2rem;
+    @include flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-right: 5rem;
+    .errorMsg{
+        margin-right: 1rem;
+        color: $red;
+        font-weight: 500;
+        margin:0;
+    }
+}
+
+.section-name, .section-password,.section-message ,.section-phone{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    position: relative;
+
+    .LabelDiv{
+        font-size: 1rem;
+        width: 5rem;
+        margin-left: 0.5rem;
+        @include flex;
+        >label{
+            color:black;
+        }
+    }
+    >input, >textarea{
+        width:20rem;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        border:none;
+        background-color: $lighten_gray;
+        padding-right: 0.5rem;
+        outline: none;
+        margin-bottom: 0.5rem;
+
+        &:focus {
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+            outline:1px solid $gray;
+          }
+    }
+
+    >textarea{
+        height:5rem;
+        resize: none;
+        width:20rem;
+    }
+}
+.btnSubmit{
+    padding: 1rem 2rem;
+    background-color: $purple;
+    color:white;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    border:none;
+    transition: all 0.3s ease-in-out;
+    position:relative;
+    top:10vh;
+    &:hover{
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;;
+        color:black;
+        background-color: $purple_hover;
+        cursor: pointer;
+    }
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.dashboard{
+    height:100vh;
+    display: flex;
+}
+
+.navbar-folders{
+    flex:0.2;
+    background-color:$white;
+    .Btn-ShowFolder {
+        border-bottom: 0.01rem solid rgb(0,0,0,0.2);
+        @include flex;
+        padding: 1.5rem 2rem;
+        padding-bottom: 0rem;
+       
+        width:12rem;
+        height:3rem;
+        justify-content: space-between;
+        > li > a{
+            text-decoration: none;
+            color: black;
+        }
+        &:hover{
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            background-color: rgb(249,253,255);
+        }
+    }
+}
+.active{
+    background-color: $white;
+}
+.h2-title-watch{
+    text-align: center;
+}
+
+.title-navbar{
+    @include flex;
+    justify-content: space-around;
+}
+
+.folders-ToShow{
+    height: 100%;
+    width:100%;
+    flex: 1.5;
+}
+
+/*Folder*/
+.folder{
+    margin-right: 3rem;
+    width: 13rem;
+    height:15rem;
+    background-color: $white;
+    border-radius: 5px;
+    border: 3px solid $grey_folder;
+
+    &:hover{
+        box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    }
+    >a > img{
+        cursor: pointer;
+        width:100%;
+        padding-top:1.2rem;
+    }
+
+    .folder__details{
+        margin-top: 1rem;
+        border-top: 2px solid $grey_folder;
+    }
+    .h3-title-folder{
+        text-align: center;
+        font-size: 0.9rem;
+    }
+}
+
+
+.box-folders{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem;
+    padding:2rem;
+    height: 100%;
+    border-radius: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.settings-File{
+    margin:0.2rem;
+
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.NavBar-settings{
+    position: absolute;
+    background-color: rgb(246,246,246);
+    border-radius: 15px;
+    @include flex;
+    >ul{
+        list-style-type: none;
+        padding: 0;
+        width: 9rem;
+        height: 1rem;
+        margin: 0.7rem 0.5rem;
+        >li{
+            text-align: center;
+            &:hover{
+                transition: all 0.3s ease-in-out;
+                cursor:pointer;
+                background: $white;
+            }
+        }
+    }
+}
+
+.editBtn
+{
+    position: relative;
+    top: 2rem;
+    left: 1rem;
+}
+/*error form*/
+.error-Form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 50rem;
+    height: 40rem;
+    background: rgb(246,246,246);
+    border-radius: 15px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.red{
+    color: $red;
+}
+
+/*X btn*/
+.btn-container{
+    width:3rem;
+    height:3rem;
+    position: absolute;
+    border:none;
+    background: transparent;
+}
+.close-container{
+  position: relative;
+  width:2rem;
+  height:3rem;
+
+  cursor: pointer;
+}
+
+.leftright{
+  height: 4px;
+  width: 30px;
+  position: absolute;
+  margin-top: 24px;
+  background-color: $softorange;
+  border-radius: 2px;
+  transform: rotate(45deg);
+  transition: all .3s ease-in;
+}
+
+.rightleft{
+  height: 4px;
+  width: 30px;
+  position: absolute;
+  margin-top: 24px;
+  background-color: $softorange;
+  border-radius: 2px;
+  transform: rotate(-45deg);
+  transition: all .3s ease-in;
+}
+
+
+.close{
+  margin: 60px 0 0 5px;
+  position: absolute;
+}
+
+.close-container:hover .leftright{
+  transform: rotate(-45deg);
+  background-color: $tomatored;
+}
+.close-container:hover .rightleft{
+  transform: rotate(45deg);
+  background-color: $tomatored;
+}
+.close-container:hover label{
+  opacity: 1;
+}
+
+.reactangle-object{
+    width: 80px;
+    border-radius: 6px;
+    position:absolute;
+}
+
+
+/*Hebet logo*/
+.Hebet_logo{
+    height: 5.5rem;
+    width:auto;
+}
+
+.WonderTeam_logo{
+    width: 6rem;
+}
+
+.eye-btn{
+    background: transparent;
+    border:none;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+
+.Nav-DashBoard{
+    background-color: $white;
+    width:100%;  
+    @include flex;
+    justify-content: space-around;
+}
+
+.name{
+@include flex;
+flex:1;
+width:4rem;
+}
+
+.search{
+    flex:3;
+}
+
+.img-profile{
+    width:2rem;
+    padding:1rem;
+}
+.input-search{
+    padding-right: 1rem;
+    width: 30rem;
+    height:3rem;
+    border:none;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.logos{
+    flex:1;
+    @include flex;
+}
+.down{
+    padding:1rem;
+}
+
+.search-icon{
+    cursor: pointer;
+    padding:0rem 1rem;
+    height:1em;
+}
+
+/*edit mode btn*/
+.editMode{
+    width: 8rem;
+    height:3rem;
+    font-size: 1rem;
+    border-radius: 15px;
+    border:none;
+    background-color: rgba(109, 109, 109, 0.25);
+    &:hover{
+        background-color: rgba(109,109,109,0.6);
+        cursor: pointer;
+    }
+}
+
+.btn-object{
+    width: 10rem;
+    height:10rem;
+    border-radius: 5px;
+    border:none;
+    margin:1rem;
+
+}
+
+.ArrayGame{
+    height: 100vh;
+    @include flex;
+    flex-direction: column;
+}
+
+.arrayObjects{
+    @include flex;
+}
+/*Array object input*/
+.input-array-game{
+    width: 10rem;
+    height:2rem;
+    border: 0.5px solid black;
+    border-radius: 5px;
+    margin-left: 0.8rem;
+    margin-right: 0.3rem;
+
+}
+.wrap-array-object{
+    @include flex;
+    flex-direction: column;
+
+}
+.h3-array-object{
+    @include flex;
+    font-size: 2rem;
+}
+
+.inputObject{
+    @include flex;
+    flex-direction: column;
+}
+.span-input{
+    font-size: 1rem;
+}
