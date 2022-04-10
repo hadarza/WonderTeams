@@ -1,6 +1,11 @@
 import {React,useState,useRef} from 'react'
 import InputObject from '../ArraysObject/InputObject';
 import Object from '../ArraysObject/Object'
+import CodeMirror from '@uiw/react-codemirror';
+import 'codemirror/keymap/sublime';
+import '../Animate/monkai.css'
+
+
 const ArraysString = () => {
     const Index1Ref = useRef(null);
 
@@ -19,6 +24,8 @@ const ArraysString = () => {
             color:"3399FF"
         }
     ])
+
+    const [code, setCode] = useState('const code = "const a = 0;\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n');
 
 
     const changeArray = (index,newValue) =>{
@@ -41,19 +48,37 @@ const ArraysString = () => {
     }
   return (
       <div className='ArrayGame'>
-        <h3 className='h3-array-object'>
-            [
-                <InputObject className='input-array-game' Index1Ref={Index1Ref} changeArray={changeArray} ArrayObjects={ArrayObjects} index="3"/>
-                <InputObject className='input-array-game' Index1Ref={Index1Ref} changeArray={changeArray} ArrayObjects={ArrayObjects} index="2"/>
-                <InputObject className='input-array-game' Index1Ref={Index1Ref} changeArray={changeArray} ArrayObjects={ArrayObjects} index="1"/>
-                <InputObject className='input-array-game' Index1Ref={Index1Ref} changeArray={changeArray} ArrayObjects={ArrayObjects} index="0"/>
+        <h2>Array And Lists - Animate</h2>
+        
+        <div className='sections-div'>
+            <div className='code-section'>
+            <div>בנה מערך בגודל 4, הכנס לו 4 ערכים והדפס אותו </div>
+            <CodeMirror
+                value={code}
+                options={{
+                    theme: 'monokai',
+                    keyMap: 'sublime',
+                    mode: 'jsx',
+                }}
+                />
+            </div>
 
-          ] = var myArray 
-    </h3>
-        <div className='arrayObjects'>
-            {ArrayObjects.map((object,index)=>( <Object key={index} name={object.name} index={3-index}/>))}
+            <div className='array-section'>
+                <div className='h3-array-object'>
+                <h4 className='h4-Array'>[</h4>
+                        <InputObject className='input-array-game' Index1Ref={Index1Ref} changeArray={changeArray} ArrayObjects={ArrayObjects} index="3"/>
+                        <InputObject className='input-array-game' Index1Ref={Index1Ref} changeArray={changeArray} ArrayObjects={ArrayObjects} index="2"/>
+                        <InputObject className='input-array-game' Index1Ref={Index1Ref} changeArray={changeArray} ArrayObjects={ArrayObjects} index="1"/>
+                        <InputObject className='input-array-game' Index1Ref={Index1Ref} changeArray={changeArray} ArrayObjects={ArrayObjects} index="0"/>
+                        <h4 className='h4-Array'>] = var myArray</h4>
+                </div>
+                <div className='arrayObjects'>
+                    {ArrayObjects.map((object,index)=>( <Object key={index} name={object.name} index={3-index}/>))}
+                </div>
         </div>
-      </div>
+      
+        </div>
+    </div>
   )
 }
 

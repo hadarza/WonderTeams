@@ -7,6 +7,10 @@ import RegisterForm from './Components/RegisterForm';
 import LoginForm from './Components/LoginForm';
 import UserDetailsProvider from '../src/UserDetailsProvide'
 import ArraysString from './Components/Animate/ArraysString';
+import AdminChanges from './Components/AdminChanges'
+import CodeMirror from '@uiw/react-codemirror';
+import 'codemirror/keymap/sublime';
+import './Components/Animate/monkai.css'
 function App() {
 
   useEffect(() => {
@@ -24,6 +28,8 @@ function App() {
         <Route exact path='/' element={<LoginForm/>}/>
         <Route exact path='/Register' element={<RegisterForm/>}/>
         <Route exact path='/DashBoard' element={<DashBoard/>}/>
+        <Route exact path='/AdminAddFiles' element={<AdminChanges/>}/>
+
         <Route exact path='/ArraysString' element={<ArraysString/>}/>
         
       </Routes>

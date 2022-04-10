@@ -87,11 +87,9 @@ const DashBoard = () => {
               ))}
           </div>
 
+
           <div className="folders-ToShow">
-              <div className="box-folders">{ShowFiles.map((object,key)=>(
-              <Folder key={key} title={object.Name} href={object.href}/>
-              
-              ))}</div>
+              <div className="box-folders">{ShowFiles.map((object,key)=>(<Folder key={key} title={object.Name} category={object.category} href={object.href}/>))}</div>
 
           </div>
           {ErrorPage && <ErrorFile/>}

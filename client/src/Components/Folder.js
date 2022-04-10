@@ -2,9 +2,18 @@ import React,{useState,useContext,createContext} from 'react'
 import {images} from '../constants'
 import {BiDotsVerticalRounded, BiErrorCircle} from 'react-icons/bi'
 import {userContext} from './DashBoard'
+import { useNavigate } from 'react-router-dom'
 import {FiEdit2} from 'react-icons/fi'
-const Folder = ({title,href}) => {
-  const [ErrorToggle, setErrorToggle] = useState(false)
+
+
+const Folder = ({title,category,href}) => {
+  const navigate = useNavigate();
+  const [ErrorToggle, setErrorToggle] = useState(false);
+  const [Folder, setFolder] = useState({
+    titleFolder : title,
+    categoryFolder : category,
+    hrefFolder : href
+  })
 
   const {ErrorPage,setErrorPage,EditMode,setEditMode} = useContext(userContext)
   const ToggleNavBarOptions = () =>{
@@ -17,16 +26,25 @@ const Folder = ({title,href}) => {
     setErrorPage(true)
     console.log(ErrorPage)
   }
+
+  const editFolder = (folder)=>{
+    // send current folder and redirect to Admin , so he'll be able to update details
+    navigate(`../AdminAddFiles?folderName=${folder.titleFolder}`, { state:{file: Folder} });
+
+  }
   return (
     <div className='folder'>
+      {console.log(href + " " + title + " "+ category)}
       <BiDotsVerticalRounded className='settings-File' onClick={()=>{ToggleNavBarOptions()}}/>
-      {(localStorage.getItem("isAdmin") && EditMode) ? <FiEdit2 className='editBtn'/> : ""}
+      {(localStorage.getItem("isAdmin") && EditMode) ? <FiEdit2 className='editBtn' onClick={()=>{editFolder(Folder)}}/> : ""}
       <div className='NavBar-settings'>
-      {/* <a href={images.TryPPTX} target="_blank" download>Download</a> */}
         {ErrorToggle ?( 
-          <ul>
-            <li onClick={()=>{ErrorOnFile()}}><BiErrorCircle/> דווח על שגיאה</li>
-          </ul> 
+          <>
+            <a href={images.TryPPTX} className="download-option" target="_blank" download>להורדה</a>
+            <ul>
+              <li onClick={()=>{ErrorOnFile()}}><BiErrorCircle/> דווח על שגיאה</li>
+            </ul> 
+          </>
         ):""}
       </div>              
         <a href={href}>

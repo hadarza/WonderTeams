@@ -14,8 +14,21 @@
 	right:0;
 	top:0;
 	bottom:0;
+    
     margin: auto;
     display: flex;
+
+
+    @media screen and (min-width: 900px) and (max-width:1400px) {
+        width: 50rem !important;
+    }
+
+    @media screen and (min-width:600px) and (max-width: 900px) {
+        width: 25rem !important;
+    }
+    @media screen and (max-width:600px){
+        width: 21rem !important;
+    }
 }
 
 .form-login{
@@ -25,9 +38,9 @@
 
 .section__Login{
     height:100%;
-    flex:1;
     background: #f8f8ff;
     border-radius: 15px;
+    flex:1;
 }
 .section__info{
     border-radius: 30px 0px 0px 30px;
@@ -35,6 +48,10 @@
     @include flex;
     flex-direction: column;
     justify-content: flex-start;
+    flex:1;
+    @media screen and (max-width: 900px) {
+        display: none;
+    }
 
     .login__background{
         width:50%;
@@ -79,14 +96,15 @@
 
 .h5-info-form{
     color:red;
-    text-align: right;
-    margin-right: 3rem;
+    text-align: center;
+    padding:1.5rem;
 }
 
 .Form__section__login{
     @include flex;
     flex-direction: column;
     margin-top: 2rem;
+    width: 90%;
 }
 
 .errorSection{
@@ -108,10 +126,10 @@
     justify-content: center;
     margin-bottom: 1rem;
     position: relative;
-
+    width: 90%;
     .LabelDiv{
         font-size: 1rem;
-        width: 5rem;
+        width: 8rem;
         margin-left: 0.5rem;
         @include flex;
         >label{
@@ -119,7 +137,7 @@
         }
     }
     >input, >textarea{
-        width:20rem;
+        width: 100%;
         padding: 1rem;
         border-radius: 0.5rem;
         border:none;
@@ -127,6 +145,8 @@
         padding-right: 0.5rem;
         outline: none;
         margin-bottom: 0.5rem;
+
+
 
         &:focus {
             box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
@@ -257,6 +277,7 @@
 }
 
 .NavBar-settings{
+    flex-direction: column;
     position: absolute;
     background-color: rgb(246,246,246);
     border-radius: 15px;
@@ -358,9 +379,13 @@
 }
 
 .reactangle-object{
-    width: 80px;
+    width: 10rem;
     border-radius: 6px;
     position:absolute;
+
+    @media screen and (max-width: 1200px) {
+        display: none;
+    }
 }
 
 
@@ -368,6 +393,14 @@
 .Hebet_logo{
     height: 5.5rem;
     width:auto;
+
+
+    @media screen and (max-width:1200px) and (min-width:900px) {
+        height:3.8rem;
+    }
+    @media screen and (max-width:900px) {
+        height:3rem;
+    }
 }
 
 .WonderTeam_logo{
@@ -396,7 +429,7 @@ width:4rem;
 }
 
 .search{
-    flex:3;
+    flex:2;
 }
 
 .img-profile{
@@ -434,6 +467,7 @@ width:4rem;
     border-radius: 15px;
     border:none;
     background-color: rgba(109, 109, 109, 0.25);
+    margin: 1rem;
     &:hover{
         background-color: rgba(109,109,109,0.6);
         cursor: pointer;
@@ -441,8 +475,8 @@ width:4rem;
 }
 
 .btn-object{
-    width: 10rem;
-    height:10rem;
+    width: 5rem;
+    height:5rem;
     border-radius: 5px;
     border:none;
     margin:1rem;
@@ -450,9 +484,24 @@ width:4rem;
 }
 
 .ArrayGame{
-    height: 100vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 45rem;
+    width:90rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     @include flex;
     flex-direction: column;
+
+}
+.sections-div{
+    @include flex;
+    height:90%;
+    width:95%;
+}
+.array-section,.code-section{
+    flex:1;
 }
 
 .arrayObjects{
@@ -460,7 +509,7 @@ width:4rem;
 }
 /*Array object input*/
 .input-array-game{
-    width: 10rem;
+    width: 6rem;
     height:2rem;
     border: 0.5px solid black;
     border-radius: 5px;
@@ -475,7 +524,10 @@ width:4rem;
 }
 .h3-array-object{
     @include flex;
-    font-size: 2rem;
+    font-size: 1rem;
+}
+.h4-Array{
+    margin-top: 2rem;
 }
 
 .inputObject{
@@ -484,4 +536,63 @@ width:4rem;
 }
 .span-input{
     font-size: 1rem;
+}
+
+/*Next back arrow */
+.nextBackArrows{
+    width:100%;
+    height:100%;
+}
+
+.download-option{
+    text-decoration: none;
+    color: black;
+    border-bottom: 0.5px solid rgb(0,0,0,0.2);
+    width: 85%;
+    text-align: center;
+    padding: 0.5rem 0rem;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.Update-File{
+    width:50rem;
+    height: 40rem;
+    background-color: $white;
+    box-shadow: #00000059 0px 5px 15px;
+    border-radius: 10px;
+    position:absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    h2{
+        text-align: right;
+        padding:1rem;
+        direction: ltr;
+    }
+
+    .sectionCategory, .sectionNewfile , .sectionName{
+        padding:1rem;
+        width:80%;
+        display: flex;
+        
+        label{
+            width:8rem;
+            display: inline-block;
+        }
+    }
+    input{
+        margin-right: 1rem;
+        width:13rem;
+        height: 2.5rem;
+        border-radius: 5px;
+        border:none;
+    }
+    #input-name{
+        padding-right: 0.5rem;
+        background-color: whitesmoke;
+    }
+
 }

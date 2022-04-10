@@ -9,10 +9,10 @@ import Rectangles from '../Components/Rectangles'
 const AppWrap = (Component, idName) => function HOC() {
   return (
     <div id={idName}>
-      <Rectangles className="reactangle" color="purple" widthRectangle="40px" HeightRectangle="800px" positionTop="-5rem" positionRight="5rem" rotate="rotate(150deg)"/>
-      <Rectangles className="reactangle" color="yellow" WidthRectangle ="80px" HeightRectangle ="80px" positionTop="38rem" positionRight="7rem" rotate="rotate(50deg)"/>
-      <Rectangles className="reactangle" color="pink" widthRectangle ="100px" HeightRectangle ="80px" positionTop="35rem" positionRight="85rem" rotate="rotate(70deg)"/>
-      <Rectangles className="reactangle" color="orange" widthRectangle ="100px" HeightRectangle ="80px" positionTop="10rem" positionRight="82rem" rotate="rotate(60deg)"/>
+      <Rectangles className="reactangle" color="purple" widthRectangle="8rem" HeightRectangle="5rem" positionTop="10rem" positionRight="5rem" rotate="rotate(150deg)"/>
+      <Rectangles className="reactangle" color="yellow" WidthRectangle ="10rem" HeightRectangle ="10rem" positionTop="38rem" positionRight="7rem" rotate="rotate(50deg)"/>
+      <Rectangles className="reactangle" color="pink" widthRectangle ="8rem" HeightRectangle ="5rem" positionTop="35rem" positionRight="85rem" rotate="rotate(70deg)"/>
+      <Rectangles className="reactangle" color="orange" widthRectangle ="5rem" HeightRectangle ="5rem" positionTop="10rem" positionRight="82rem" rotate="rotate(60deg)"/>
 
       <div className="login-section">
           <div className='section__Login'>

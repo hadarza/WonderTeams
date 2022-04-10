@@ -5,6 +5,8 @@ import Hebet from '../Assets/Hebet.png'
 import Person from '../Assets/person.png'
 import WonderTeam from '../Assets/WonderTeamPng.png'
 import TryPPTX from '../Assets/Try.pptx'
+import previous from '../Assets/previous.png'
+import next from '../Assets/right-arrow.png'
 export default {
     background,
     File,
@@ -12,5 +14,7 @@ export default {
     Hebet,
     Person,
     WonderTeam,
-    TryPPTX
+    TryPPTX,
+    previous,
+    next
 }

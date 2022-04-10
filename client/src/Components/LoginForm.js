@@ -55,7 +55,8 @@ useEffect(() => {
     <>
     <TitleAndInfoForm 
         title="התחברות"
-        info=" אנא וודאו שכל אחד מחברי הצוות יש משתמש משלו ולא פר צוות"
+        info="אין לך משתמש? הירשם!"
+        href = "/register"
     />
     <form className='form-login' onSubmit={handleSubmit((data) => {
         sendLoginPostRequest(data)

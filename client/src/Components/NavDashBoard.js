@@ -1,24 +1,34 @@
-import {React,useContext,useRef,useState} from 'react'
+import {React,useContext,useRef,useState,useEffect} from 'react'
 import {images} from '../constants'
 import {BiSearch} from 'react-icons/bi'
 import {AiOutlineDown} from 'react-icons/ai'
 import { userContext } from './DashBoard';
+import { useNavigate } from 'react-router-dom';
 
 
 const NavDashBoard = () => {
-
+    const navigate = useNavigate();
     const BtnEditMode = useRef(null);
-    BtnEditMode.current = "מצב עריכה"
+    const UploadingFolders = useRef(null)
+    BtnEditMode.current = "מצב עריכה";
+
     const {EditMode,setEditMode} = useContext(userContext)
     const [EditText, setEditText] = useState(BtnEditMode.current);
 
+    // toggle edit mode for admin user
     const ToggleEditMode = () =>{
         setEditMode(!EditMode);
+        
         if(!EditMode) BtnEditMode.current = "צא ממצב עריכה";
         else BtnEditMode.current = "מצב עריכה"
+
         setEditText(BtnEditMode.current)
-        console.log(EditText);
     }
+    useEffect(() => {
+        if(!EditMode) UploadingFolders.current.style.visibility="hidden";
+        else UploadingFolders.current.style.visibility="visible";
+    }, [EditMode])
+    
   return (
     <div className='Nav-DashBoard'>
         <div className='name'>
@@ -31,7 +41,7 @@ const NavDashBoard = () => {
             <BiSearch className='search-icon'/>
         </div>
 
-
+        {(localStorage.getItem("isAdmin")) && <button className='editMode' ref={UploadingFolders}>העלאת קבצים נוספים </button>}
         {(localStorage.getItem("isAdmin")) && <button ref={BtnEditMode} className='editMode' onClick={()=>{ToggleEditMode()}}>{EditText} </button>}
 
         <div className='logos'>
