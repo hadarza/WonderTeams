@@ -2,7 +2,7 @@ import React,{useEffect,useState,useMemo,useContext, createContext} from 'react'
 import {BsFolder,BsFolder2Open} from 'react-icons/bs'
 import Folder from '../Components/Folder'
 import ErrorFile from './ErrorFile';
-import {images} from '../constants'
+import {images} from '../constants/'
 import axios from 'axios'
 import NavDashBoard from './NavDashBoard';
 import {AiOutlineEdit} from 'react-icons/ai'
