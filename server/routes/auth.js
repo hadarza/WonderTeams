@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const FileShow = require('../model/FilesPresent')
+const FileShow = require('../models/FilesPresent')
 
 router.post('/upload', (req,res) =>{
   return res.status(200).send({
