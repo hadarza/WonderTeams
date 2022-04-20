@@ -46,7 +46,7 @@ const LoginForm = () => {
     
 
 useEffect(() => {
-    if(localStorage.getItem("NameUser") == "" && localStorage.getItem('isAdmin') == ""){
+    if(localStorage.getItem("NameUser") == ""){
         localStorage.setItem('NameUser', userDetails.Name);
         localStorage.setItem('isAdmin', userDetails.isAdmin);
     }

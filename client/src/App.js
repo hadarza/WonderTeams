@@ -1,4 +1,4 @@
-import react,{useEffect,useContext} from 'react'
+import react,{useEffect} from 'react'
 import './scss/Application.scss'
 import WebFont from 'webfontloader';
 import DashBoard from './Components/DashBoard';
@@ -7,8 +7,7 @@ import RegisterForm from './Components/RegisterForm';
 import LoginForm from './Components/LoginForm';
 import UserDetailsProvider from '../src/UserDetailsProvide'
 import ArraysString from './Components/Animate/ArraysString';
-import AdminChanges from './Components/AdminChanges'
-import CodeMirror from '@uiw/react-codemirror';
+import AdminChanges from './Components/Admin/AdminChanges'
 import 'codemirror/keymap/sublime';
 import './Components/Animate/monkai.css'
 import BlogArrays from './Components/Animate/BlogArrays';
@@ -31,7 +30,6 @@ function App() {
         <Route exact path='/Register' element={<RegisterForm/>}/>
         <Route exact path='/DashBoard' element={<DashBoard/>}/>
         <Route exact path='/AdminAddFiles' element={<AdminChanges/>}/>
-
         <Route exact path='/ArraysString' element={<ArraysString/>}/>
         <Route exact path='/BlogArrays' element={<BlogArrays i={0} j={3} steps={3} max={Data.Intro.length}/>}/>
 

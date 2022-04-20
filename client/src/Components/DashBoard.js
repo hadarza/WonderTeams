@@ -11,7 +11,7 @@ export const userContext = createContext();
 
 const DashBoard = () => {
     const [EditMode, setEditMode] = useState(false)
-    const [activeSubject, setactiveSubject] = useState('');
+    const [activeSubject, setactiveSubject] = useState('Animate');
     const [data,setData]=useState([]);
     const [ShowFiles,setShowFiles]=useState([]);
     const [HrefLists,setHrefLists] = useState([images.TryPPTX,images.TryPPTX]) // list of href
@@ -20,7 +20,7 @@ const DashBoard = () => {
 
 
     const ShowOnlyCategory = (category) =>{
-      axios.get(`http://localhost:5000/api/user/DashBoard/${category}`)
+      axios.get(`http://localhost:5000/api/DashBoard/${category}`)
       .then((res) => {
           setShowFiles(res.data)
         }).catch((error) => {
@@ -30,7 +30,7 @@ const DashBoard = () => {
 
     
     const SetInfo = () =>{
-      axios.get("http://localhost:5000/api/user/DashBoard")
+      axios.get("http://localhost:5000/api/DashBoard/")
       .then((res) => {
           setShowFiles(res.data)
         }).catch((error) => {
@@ -56,6 +56,7 @@ const DashBoard = () => {
           setData(myJson)
         });
     }
+
     useEffect(()=>{
       SetInfo();
       getData();
@@ -66,7 +67,6 @@ const DashBoard = () => {
   return (
     <userContext.Provider value = {{ErrorPage,setErrorPage,EditMode,setEditMode}}>
       <>
-      {console.log(value)}
       <NavDashBoard ShowFiles={ShowFiles} setShowFiles={setShowFiles} />
       <div className='dashboard'>
           <div className="navbar-folders">

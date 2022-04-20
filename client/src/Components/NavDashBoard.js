@@ -5,17 +5,19 @@ import {AiOutlineDown} from 'react-icons/ai'
 import { userContext } from './DashBoard';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import LogOut from './LogOut/LogOut';
 
 
 const NavDashBoard = ({ShowFiles,setShowFiles}) => {
-    const navigate = useNavigate();
-    const BtnEditMode = useRef(null);
     const UploadingFolders = useRef(null)
     const [searchText, setsearchText] = useState("")
+
+    const BtnEditMode = useRef(null);
     BtnEditMode.current = "מצב עריכה";
 
     const {EditMode,setEditMode} = useContext(userContext)
     const [EditText, setEditText] = useState(BtnEditMode.current);
+    const [SeeLogOut, setSeeLogOut] = useState(false)
 
     // toggle edit mode for admin user
     const ToggleEditMode = () =>{
@@ -25,16 +27,11 @@ const NavDashBoard = ({ShowFiles,setShowFiles}) => {
         else BtnEditMode.current = "מצב עריכה"
 
         setEditText(BtnEditMode.current)
-    }
-    useEffect(() => {
-        if(!EditMode) UploadingFolders.current.style.visibility="hidden";
-        else UploadingFolders.current.style.visibility="visible";
-    }, [EditMode])
-    
+    }    
 
     const searchByName = ()=>{
         //search by name file in our DB
-        axios.post("http://localhost:5000/api/user/search",{searchText})
+        axios.post("http://localhost:5000/api/DashBoard/search",{searchText})
         .then((res) => {
             setShowFiles(res.data)
           }).catch((error) => {
@@ -42,12 +39,20 @@ const NavDashBoard = ({ShowFiles,setShowFiles}) => {
             console.log(error);
         })
     }
+
+    useEffect(() => {
+        if(!EditMode) UploadingFolders.current.style.visibility="hidden";
+        else UploadingFolders.current.style.visibility="visible";
+    }, [EditMode])
+
   return (
     <div className='Nav-DashBoard'>
         <div className='name'>
             <img className='img-profile' src={images.Person} alt="Image-Person"/>
             <h5>{localStorage.getItem('NameUser')}</h5>
-            <AiOutlineDown className='down'/>
+            <AiOutlineDown className='down' onClick={() =>{setSeeLogOut(!SeeLogOut)}}/>
+            {SeeLogOut && <LogOut/>}
+
         </div>
         <div className='search'>
             <input className='input-search' type="text" placeholder='חפש קובץ...'  value={searchText} onChange={(e)=>{setsearchText(e.currentTarget.value)}} />

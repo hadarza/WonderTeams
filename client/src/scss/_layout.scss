@@ -426,12 +426,13 @@
 
 .name{
 @include flex;
-flex:1;
+flex:0.5;
 width:4rem;
 }
 
 .search{
-    flex:2;
+    position: relative;
+    flex:1;
 }
 
 .img-profile{
@@ -445,20 +446,31 @@ width:4rem;
     border:none;
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.1);
+
+    @media screen and (max-width: 900px) {
+        width:15rem;
+    }
 }
 
 .logos{
     flex:1;
     @include flex;
+    justify-content: left;
 }
 .down{
     padding:1rem;
+    &:hover{
+        cursor: pointer;
+    }
 }
 
 .search-icon{
     cursor: pointer;
-    padding:0rem 1rem;
+    padding:0rem 0rem;
     height:1em;
+    position: absolute;
+    top: 20px;
+    left: 15px;
 }
 
 /*edit mode btn*/
@@ -693,4 +705,28 @@ width:4rem;
 
 .section-Blog{
     position: relative;
+}
+
+/*Log Out div*/
+.div-LogOut{
+    position: absolute;
+    top:10vh;
+    background-color: $lighten_gray;
+    width:9rem;
+    height: 5rem;
+    border-radius: 10px;
+    @include flex;
+}
+
+.btn-LogOut{
+
+    font-size: .8em;
+    padding:0.5rem;
+    letter-spacing: 1px;
+    transition: opacity .45s;
+    -webkit-transition: opacity .35s;
+
+    &:hover{
+        cursor: pointer;
+    }
 }

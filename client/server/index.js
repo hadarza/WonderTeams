@@ -1,16 +1,17 @@
 const express = require('express')
+const app = express()
 const path = require('path')
 const crypto = require('crypto')
 const multer = require('multer')
 const {GridFsStorage} = require('multer-gridfs-storage')
 const Grid = require('gridfs-stream')
 const methodOverride = require('method-override')
-const router = require('express').Router();
-
-const app = express()
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 dotenv.config()
+
+const DashBoard = require('./routes/DashBoard')
+const User = require('./routes/user')
 
 var cors = require('cors');
 //connect to DB
@@ -54,10 +55,8 @@ mongoose.connection.once('open', () => {
   const upload = multer({ storage });
 
 
-//import routes
-const authRoutes = require('./routes/auth')
-
 //Router Middlewares
-app.use('/api/user',authRoutes)
+app.use('/api/user',User)
+app.use('/api/DashBoard',DashBoard)
 
 app.listen(5000, ()=>{console.log('Server is up and running')})

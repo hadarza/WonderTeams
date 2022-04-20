@@ -1,11 +1,11 @@
 import React,{useState,useEffect} from 'react'
 import Dropdown from 'react-dropdown';
-import Folder from './Folder';
+import Folder from '../Folder';
 import {useLocation} from 'react-router-dom';
 import 'react-dropdown/style.css';
 import axios from 'axios';
 
-const AdminChanges = (file) => {
+const AdminChanges = () => {
   const location = useLocation();
   const [currentFile, setcurrentFile] = useState(location.state.file);
     const options = [
@@ -16,13 +16,10 @@ const AdminChanges = (file) => {
 
       const changeTitle = e =>{
         const {name,value} = e.currentTarget;
-        console.log(name + " "+ value)
           setcurrentFile(prevState => ({
             ...prevState,
             [name]: value
         }));
-        console.log(currentFile)
-
       }
 
       const changeDropDown = e =>{
@@ -37,7 +34,7 @@ const AdminChanges = (file) => {
       useEffect(() => {
           setcurrentFile(location.state.file);
       }, [])
-
+      
 
       const postChangeFile = async () =>{
       
@@ -56,7 +53,7 @@ const AdminChanges = (file) => {
      {( currentFile != null ) && (
         <>
       <form className='form-login'>
-       <h2> {currentFile.titleFolder}  שינויים בקובץ </h2>
+       <h2>{location.state.file.titleFolder}  שינויים בקובץ</h2>
         
         <div className='sectionName'>
             <label>שם הקובץ</label>
