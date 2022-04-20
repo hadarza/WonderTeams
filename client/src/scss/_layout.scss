@@ -194,11 +194,12 @@
     .Btn-ShowFolder {
         border-bottom: 0.01rem solid rgb(0,0,0,0.2);
         @include flex;
-        padding: 1.5rem 2rem;
+        padding: 1rem 1rem;
         padding-bottom: 0rem;
+        box-sizing: border-box;
        
-        width:12rem;
-        height:3rem;
+        width: 13rem;
+        height:4rem;
         justify-content: space-between;
         > li > a{
             text-decoration: none;
@@ -212,6 +213,7 @@
     }
 }
 .active{
+    border-right: 8px solid $purple;
     background-color: $white;
 }
 .h2-title-watch{
@@ -556,7 +558,9 @@ width:4rem;
 .hidden{
     visibility: hidden;
 }
-
+.show{
+    visibility: visible;
+}
 .Update-File{
     width:50rem;
     height: 40rem;
@@ -594,5 +598,99 @@ width:4rem;
         padding-right: 0.5rem;
         background-color: whitesmoke;
     }
+}
 
+/*Blog*/
+.Header-Blog{
+    background-color: $lighten_gray;
+    text-align: center;
+    padding:2rem;
+
+    >h1{
+    font-size: 2.5rem;
+    color: $purple;
+    font-weight: 600;
+    }
+}
+.code-section{
+    overflow-x:hidden;
+    overflow-y:auto;
+    background-color: $black_code;
+    height:auto;
+    padding:2rem;
+    width: 30rem;
+    color:white;
+    border-radius: 10px;
+
+    @media screen and (max-width: 900px) {
+        width:18rem;
+    }
+    &:hover{
+        background-color: $black_code_hover;
+    }
+    p{
+        direction: ltr !important;
+
+        @media screen and (max-width:900px){
+            font-size: 0.9rem;
+        }
+        @media screen and  (max-width:700px){
+            font-size: 0.8rem;
+        }
+    }
+}
+
+.info{
+    background-color: $grey_folder;
+    padding: 1rem 2rem;
+}
+.copy-btn{
+    &:hover{
+        cursor: pointer;
+        color: $lighten_gray;
+    }
+}
+
+.copy-indication{
+    padding:0.5rem;
+    color: $softorange;
+}
+.info-header > span{
+    padding-right:0.5rem;
+    padding-left:0.5rem;
+
+}
+.info-header > span:nth-child(1){
+    border-left: 1px solid black;
+}
+
+.time-icon{
+    padding-right:0.3rem;
+}
+
+/*next & prev btns*/
+.next-btn{
+    width: 3rem;
+    position: absolute;
+    bottom: 1rem;
+    left:1rem;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.prev-btn{
+    width: 3rem;
+    height:3rem;
+    position: absolute;
+    bottom: 1rem;
+    left:6rem;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+
+.section-Blog{
+    position: relative;
 }

@@ -6,13 +6,14 @@ import { useNavigate } from 'react-router-dom'
 import {FiEdit2} from 'react-icons/fi'
 
 
-const Folder = ({title,category,href}) => {
+const Folder = ({title,category,href,link}) => {
   const navigate = useNavigate();
   const [ErrorToggle, setErrorToggle] = useState(false);
   const [Folder, setFolder] = useState({
     titleFolder : title,
     categoryFolder : category,
-    hrefFolder : href
+    hrefFolder : href,
+    Link: link
   })
 
   const {ErrorPage,setErrorPage,EditMode,setEditMode} = useContext(userContext)
@@ -29,12 +30,12 @@ const Folder = ({title,category,href}) => {
 
   const editFolder = (folder)=>{
     // send current folder and redirect to Admin , so he'll be able to update details
-    navigate(`../AdminAddFiles?folderName=${folder.titleFolder}`, { state:{file: Folder} });
+    navigate(`../AdminAddFiles?folderName=${folder.titleFolder}`, {state: {file: folder }});
 
   }
   return (
     <div className='folder'>
-      {console.log(href + " " + title + " "+ category)}
+      {console.log(href + " " + title + " "+ category + " "+ link)}
       <BiDotsVerticalRounded className='settings-File' onClick={()=>{ToggleNavBarOptions()}}/>
       {(localStorage.getItem("isAdmin") && EditMode) ? <FiEdit2 className='editBtn' onClick={()=>{editFolder(Folder)}}/> : ""}
       <div className='NavBar-settings'>

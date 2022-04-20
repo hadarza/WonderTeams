@@ -24,12 +24,19 @@ const RegisterForm = () => {
     const sendRegisterPostRequest = (Sendingdata) =>{
          axios.post("http://localhost:5000/api/user/register",{Sendingdata})
         .then(res => { 
-            setShowErrorLogin(false)
-        })
-        .catch(error => {
+            setUserDetails({
+                ...userDetails,
+                Name: res.data.Name,
+                isAdmin: res.data.isAdmin
+            });
+            console.log(userDetails)
+            setShowErrorLogin(false);
+            // when user successfully enter , redirect him to DashBoard page 
+            setSentSuccess(true);
+        }).catch((error) => {
+            //show error message - your name/password is wrong
             setShowErrorLogin(true);
-            console.log(ShowErrorLogin)
-        });
+        })
     }
 
     
@@ -67,22 +74,24 @@ useEffect(() => {
                     <label>סיסמה</label>
                 </div>
                 <input {...register("Password",{required:'חובה להכניס סיסמה' , minLength:{value:6, message:'הסיסמה חייבת להכיל מעל 6 אותיות'}})} name="Password" placeholder="סיסמה"/>
-            </div>    
+            </div> 
+
+              <div className='section-password'>
+                <div className='LabelDiv'>
+                    <label>שם יחידה</label>
+                </div>
+                <input {...register("Unit",{required:'חובה להכניס את שם היחידה '})} name="Unit" placeholder="יחידה"/>
+            </div>   
         </div>
 
-        <div className='section-password'>
-            <div className='LabelDiv'>
-                <label>שם הצוות</label>
-            </div>
-            <input {...register("Unit",{required:'חובה להכניס את שם היחידה '})} name="Unit" placeholder="יחידה"/>
-        </div>
+      
         <div className='errorSection'>
             <p className='errorMsg'>{errors.Name?.message}</p>
             <p className='errorMsg'>{errors.Password?.message}</p>
             <p className='errorMsg'>{errors.Unit?.message}</p>
             {ShowErrorLogin && <p>לצערנו כבר קיים שם משתמש בשם זה, בחר שם אחר</p>}
         </div>
-        <input className="btnSubmit" type="submit" value="התחבר"/>
+        <input className="btnSubmit" type="submit" value="הירשם"/>
 
     </form>
     </>

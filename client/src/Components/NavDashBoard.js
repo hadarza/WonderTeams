@@ -4,12 +4,14 @@ import {BiSearch} from 'react-icons/bi'
 import {AiOutlineDown} from 'react-icons/ai'
 import { userContext } from './DashBoard';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
-const NavDashBoard = () => {
+const NavDashBoard = ({ShowFiles,setShowFiles}) => {
     const navigate = useNavigate();
     const BtnEditMode = useRef(null);
     const UploadingFolders = useRef(null)
+    const [searchText, setsearchText] = useState("")
     BtnEditMode.current = "מצב עריכה";
 
     const {EditMode,setEditMode} = useContext(userContext)
@@ -29,6 +31,17 @@ const NavDashBoard = () => {
         else UploadingFolders.current.style.visibility="visible";
     }, [EditMode])
     
+
+    const searchByName = ()=>{
+        //search by name file in our DB
+        axios.post("http://localhost:5000/api/user/search",{searchText})
+        .then((res) => {
+            setShowFiles(res.data)
+          }).catch((error) => {
+            //show error message - your name/password is wrong
+            console.log(error);
+        })
+    }
   return (
     <div className='Nav-DashBoard'>
         <div className='name'>
@@ -37,8 +50,8 @@ const NavDashBoard = () => {
             <AiOutlineDown className='down'/>
         </div>
         <div className='search'>
-            <input className='input-search' type="text" placeholder='חפש קובץ...' />
-            <BiSearch className='search-icon'/>
+            <input className='input-search' type="text" placeholder='חפש קובץ...'  value={searchText} onChange={(e)=>{setsearchText(e.currentTarget.value)}} />
+            <BiSearch className='search-icon' onClick={()=>{searchByName()}}/>
         </div>
 
         {(localStorage.getItem("isAdmin")) && <button className='editMode' ref={UploadingFolders}>העלאת קבצים נוספים </button>}

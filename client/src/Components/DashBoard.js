@@ -24,7 +24,6 @@ const DashBoard = () => {
       .then((res) => {
           setShowFiles(res.data)
         }).catch((error) => {
-          //show error message - your name/password is wrong
           console.log(error);
       })
   }
@@ -68,11 +67,11 @@ const DashBoard = () => {
     <userContext.Provider value = {{ErrorPage,setErrorPage,EditMode,setEditMode}}>
       <>
       {console.log(value)}
-      <NavDashBoard />
+      <NavDashBoard ShowFiles={ShowFiles} setShowFiles={setShowFiles} />
       <div className='dashboard'>
           <div className="navbar-folders">
 
-              {['Info','Animate','Storyline','Web'].map((item)=>(
+              {['Animate','Web'].map((item)=>(
                   
                   <div className={`Btn-ShowFolder ${activeSubject === item ? 'active': ''}`} onClick={()=>{
                     setactiveSubject(item)
@@ -87,9 +86,8 @@ const DashBoard = () => {
               ))}
           </div>
 
-
           <div className="folders-ToShow">
-              <div className="box-folders">{ShowFiles.map((object,key)=>(<Folder key={key} title={object.Name} category={object.category} href={object.href}/>))}</div>
+              <div className="box-folders">{ShowFiles.map((object,key)=>(<Folder key={key} title={object.Name} category={object.category} href={object.href} link={object.link}/>))}</div>
 
           </div>
           {ErrorPage && <ErrorFile/>}

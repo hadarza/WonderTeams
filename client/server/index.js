@@ -5,6 +5,7 @@ const multer = require('multer')
 const {GridFsStorage} = require('multer-gridfs-storage')
 const Grid = require('gridfs-stream')
 const methodOverride = require('method-override')
+const router = require('express').Router();
 
 const app = express()
 const mongoose = require('mongoose')
@@ -56,14 +57,7 @@ mongoose.connection.once('open', () => {
 //import routes
 const authRoutes = require('./routes/auth')
 
-
-app.post('/upload',upload.single('file'),(req,res) =>{
-    res.json({file: req.file})
-})
-
-app.get('/files',(req,res)=>{
-    
-})
 //Router Middlewares
 app.use('/api/user',authRoutes)
+
 app.listen(5000, ()=>{console.log('Server is up and running')})

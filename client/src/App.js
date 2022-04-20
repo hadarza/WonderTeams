@@ -11,6 +11,8 @@ import AdminChanges from './Components/AdminChanges'
 import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/keymap/sublime';
 import './Components/Animate/monkai.css'
+import BlogArrays from './Components/Animate/BlogArrays';
+import {Data} from '../src/Components/Animate/ArrayDB'
 function App() {
 
   useEffect(() => {
@@ -31,6 +33,8 @@ function App() {
         <Route exact path='/AdminAddFiles' element={<AdminChanges/>}/>
 
         <Route exact path='/ArraysString' element={<ArraysString/>}/>
+        <Route exact path='/BlogArrays' element={<BlogArrays i={0} j={3} steps={3} max={Data.Intro.length}/>}/>
+
         
       </Routes>
     </UserDetailsProvider>

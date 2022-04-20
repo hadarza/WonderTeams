@@ -9,7 +9,6 @@ import { userDetailsContext } from '../UserDetailsProvide';
 
 const LoginForm = () => {
     const navigate = useNavigate();
-    console.log(userDetailsContext)
     const [userDetails, setUserDetails] = useContext(userDetailsContext);
     const [passwordShown, setPasswordShown] = useState(false);
     const [ShowErrorLogin, setShowErrorLogin] = useState(false)
@@ -21,7 +20,7 @@ const LoginForm = () => {
 
     const sendLoginPostRequest =async (sendingData) =>{
        await axios.post("http://localhost:5000/api/user/login",{sendingData})
-        .then((res) => {;
+        .then((res) => {
             setUserDetails({
                 ...userDetails,
                 Name: res.data.Name,
@@ -35,12 +34,22 @@ const LoginForm = () => {
             setShowErrorLogin(true);
         })
     }
+    useEffect(() => {
+      //  console.log(localStorage.getItem('isAdmin'));
+      //  console.log(localStorage.getItem('NameUser'));
+
+         if(localStorage.getItem("NameUser") !== "" && localStorage.getItem('isAdmin') != "")
+           navigate("/DashBoard")
+
+    }, [])
+    
     
 
 useEffect(() => {
-    console.log(userDetails)
-    localStorage.setItem('NameUser', userDetails.Name);
-    localStorage.setItem('isAdmin', userDetails.isAdmin);
+    if(localStorage.getItem("NameUser") == "" && localStorage.getItem('isAdmin') == ""){
+        localStorage.setItem('NameUser', userDetails.Name);
+        localStorage.setItem('isAdmin', userDetails.isAdmin);
+    }
 
     setTimeout(() => {
         if (sentSuccess) {
