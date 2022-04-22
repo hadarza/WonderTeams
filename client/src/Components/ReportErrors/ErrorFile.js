@@ -1,9 +1,9 @@
 import React,{useContext,useRef} from 'react'
 import {useForm} from 'react-hook-form'
-import TitleAndInfoForm from './TitleAndInfoForm'
-import {userContext} from './DashBoard'
+import TitleAndInfoForm from '../TitleAndInfoForm'
+import {userContext} from '../DashBoard/DashBoard'
 
-import Xbtn from './Xbtn'
+import Xbtn from '../Xbtn'
 
 const ErrorFile = () => {
     const FormRef = useRef(null);

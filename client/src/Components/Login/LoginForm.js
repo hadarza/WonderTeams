@@ -1,11 +1,11 @@
 import React,{useDebugValue, useState,useContext,useEffect} from 'react'
 import {useForm} from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
-import TitleAndInfoForm from './TitleAndInfoForm'
+import TitleAndInfoForm from '../TitleAndInfoForm'
 import axios from 'axios'
 import {BsEyeFill,BsEyeSlashFill} from 'react-icons/bs'
-import {AppWrap} from '../wrapper/index'
-import { userDetailsContext } from '../UserDetailsProvide';
+import AppWrap from '../../wrapper/AppWrap'
+import { userDetailsContext } from '../../UserDetailsProvide';
 
 const LoginForm = () => {
     const navigate = useNavigate();
@@ -38,8 +38,8 @@ const LoginForm = () => {
       //  console.log(localStorage.getItem('isAdmin'));
       //  console.log(localStorage.getItem('NameUser'));
 
-         if(localStorage.getItem("NameUser") !== "" && localStorage.getItem('isAdmin') != "")
-           navigate("/DashBoard")
+       //  if(localStorage.getItem("NameUser") !== "" && localStorage.getItem('isAdmin') != "")
+        //   navigate("/DashBoard")
 
     }, [])
     

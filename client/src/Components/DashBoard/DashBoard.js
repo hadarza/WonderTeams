@@ -1,11 +1,10 @@
 import React,{useEffect,useState,useMemo,useContext, createContext} from 'react'
 import {BsFolder,BsFolder2Open} from 'react-icons/bs'
-import Folder from '../Components/Folder'
-import ErrorFile from './ErrorFile';
-import {images} from '../constants/'
+import Folder from './Folder'
+import ErrorFile from '../ReportErrors/ErrorFile';
+import {images} from '../../constants'
 import axios from 'axios'
 import NavDashBoard from './NavDashBoard';
-import {AiOutlineEdit} from 'react-icons/ai'
 
 export const userContext = createContext();
 
@@ -33,8 +32,8 @@ const DashBoard = () => {
       axios.get("http://localhost:5000/api/DashBoard/")
       .then((res) => {
           setShowFiles(res.data)
+          console.log(ShowFiles)
         }).catch((error) => {
-          //show error message - your name/password is wrong
           console.log(error);
       })
   }
@@ -61,6 +60,7 @@ const DashBoard = () => {
       SetInfo();
       getData();
     },[])
+
     
     const value = useMemo(()=>([ErrorPage,setErrorPage,EditMode,setEditMode]),[ErrorPage,EditMode])
 
@@ -87,7 +87,9 @@ const DashBoard = () => {
           </div>
 
           <div className="folders-ToShow">
-              <div className="box-folders">{ShowFiles.map((object,key)=>(<Folder key={key} title={object.Name} category={object.category} href={object.href} link={object.link}/>))}</div>
+              <div className="box-folders">{ShowFiles.map((object,key)=>(
+              <Folder key={key} title={object.Name} category={object.Category} href={object.href} link={object.Link}/>
+            ))}</div>
 
           </div>
           {ErrorPage && <ErrorFile/>}

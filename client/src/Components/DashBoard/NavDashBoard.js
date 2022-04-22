@@ -1,14 +1,15 @@
 import {React,useContext,useRef,useState,useEffect} from 'react'
-import {images} from '../constants'
+import {images} from '../../constants'
 import {BiSearch} from 'react-icons/bi'
 import {AiOutlineDown} from 'react-icons/ai'
 import { userContext } from './DashBoard';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import LogOut from './LogOut/LogOut';
+import LogOut from '../LogOut/LogOut';
 
 
 const NavDashBoard = ({ShowFiles,setShowFiles}) => {
+    const navigate = useNavigate();
     const UploadingFolders = useRef(null)
     const [searchText, setsearchText] = useState("")
 
@@ -40,6 +41,11 @@ const NavDashBoard = ({ShowFiles,setShowFiles}) => {
         })
     }
 
+    const UploadNewFiles = () =>{
+        // Admin - able to upload new files to dashBoard
+        navigate(`../AdminUploadFile`, {state: {file: null }});
+    }
+
     useEffect(() => {
         if(!EditMode) UploadingFolders.current.style.visibility="hidden";
         else UploadingFolders.current.style.visibility="visible";
@@ -59,8 +65,12 @@ const NavDashBoard = ({ShowFiles,setShowFiles}) => {
             <BiSearch className='search-icon' onClick={()=>{searchByName()}}/>
         </div>
 
-        {(localStorage.getItem("isAdmin")) && <button className='editMode' ref={UploadingFolders}>העלאת קבצים נוספים </button>}
-        {(localStorage.getItem("isAdmin")) && <button ref={BtnEditMode} className='editMode' onClick={()=>{ToggleEditMode()}}>{EditText} </button>}
+        {(localStorage.getItem("isAdmin")) && 
+        <>
+            <button className='editMode' ref={UploadingFolders} onClick={()=>{UploadNewFiles()}}>העלאת קבצים נוספים </button>
+            <button ref={BtnEditMode} className='editMode' onClick={()=>{ToggleEditMode()}}>{EditText} </button>
+        </>
+        }
 
         <div className='logos'>
             <img className='WonderTeam_logo' src={images.WonderTeam}/>

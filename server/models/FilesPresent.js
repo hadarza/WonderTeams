@@ -11,7 +11,7 @@ const FileSchema = new mongoose.Schema({
     },
     Category:{
         type:String,
-        allowedValues: ['Info','Web','Animate']
+        required:true
     },
     Link:{
         type:String,

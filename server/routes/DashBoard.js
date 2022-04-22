@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const FileShow = require('../models/FilesPresent')
 const FileController = require('../controllers/FileController')
 //Load All files
 router.get('/',FileController.LoadFiles)

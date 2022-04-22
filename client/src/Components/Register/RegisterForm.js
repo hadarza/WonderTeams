@@ -1,10 +1,10 @@
 import React,{useState,useEffect,useContext} from 'react'
 import {useForm} from 'react-hook-form'
-import TitleAndInfoForm from './TitleAndInfoForm'
+import TitleAndInfoForm from '../TitleAndInfoForm'
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
-import {AppWrap} from '../wrapper/index'
-import { userDetailsContext } from '../UserDetailsProvide';
+import {AppWrap} from '../../wrapper/index'
+import { userDetailsContext } from '../../UserDetailsProvide';
 
 const RegisterForm = () => {
 

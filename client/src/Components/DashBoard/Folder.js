@@ -1,5 +1,5 @@
 import React,{useState,useContext,createContext} from 'react'
-import {images} from '../constants'
+import {images} from '../../constants'
 import {BiDotsVerticalRounded, BiErrorCircle} from 'react-icons/bi'
 import {userContext} from './DashBoard'
 import { useNavigate } from 'react-router-dom'
@@ -15,7 +15,6 @@ const Folder = ({title,category,href,link}) => {
     hrefFolder : href,
     Link: link
   })
-
   const {ErrorPage,setErrorPage,EditMode,setEditMode} = useContext(userContext)
   const ToggleNavBarOptions = () =>{
     //toggle navBarOptions
@@ -30,7 +29,7 @@ const Folder = ({title,category,href,link}) => {
 
   const editFolder = (folder)=>{
     // send current folder and redirect to Admin , so he'll be able to update details
-    navigate(`../AdminAddFiles?folderName=${folder.titleFolder}`, {state: {file: folder }});
+    navigate(`../AdminUpdateFile?folderName=${folder.titleFolder}`, {state: {file: folder }});
 
   }
   return (

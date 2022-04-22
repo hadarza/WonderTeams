@@ -1,14 +1,14 @@
 import react,{useEffect} from 'react'
 import './scss/Application.scss'
 import WebFont from 'webfontloader';
-import DashBoard from './Components/DashBoard';
+import DashBoard from './Components/DashBoard/DashBoard';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import RegisterForm from './Components/RegisterForm';
-import LoginForm from './Components/LoginForm';
+import RegisterForm from './Components/Register/RegisterForm';
+import LoginForm from './Components/Login/LoginForm';
 import UserDetailsProvider from '../src/UserDetailsProvide'
 import ArraysString from './Components/Animate/ArraysString';
-import AdminChanges from './Components/Admin/AdminChanges'
-import 'codemirror/keymap/sublime';
+import AdminUpdateFile from './Components/Admin/AdminUpdateFile';
+import AdminUploadFile from './Components/Admin/AdminUploadFile';import 'codemirror/keymap/sublime';
 import './Components/Animate/monkai.css'
 import BlogArrays from './Components/Animate/BlogArrays';
 import {Data} from '../src/Components/Animate/ArrayDB'
@@ -29,7 +29,8 @@ function App() {
         <Route exact path='/' element={<LoginForm/>}/>
         <Route exact path='/Register' element={<RegisterForm/>}/>
         <Route exact path='/DashBoard' element={<DashBoard/>}/>
-        <Route exact path='/AdminAddFiles' element={<AdminChanges/>}/>
+        <Route exact path='/AdminUpdateFile' element={<AdminUpdateFile/>}/>
+        <Route exact path='/AdminUploadFile' element={<AdminUploadFile/>}/>
         <Route exact path='/ArraysString' element={<ArraysString/>}/>
         <Route exact path='/BlogArrays' element={<BlogArrays i={0} j={3} steps={3} max={Data.Intro.length}/>}/>
 
