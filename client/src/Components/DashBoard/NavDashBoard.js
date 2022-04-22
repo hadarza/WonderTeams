@@ -47,8 +47,10 @@ const NavDashBoard = ({ShowFiles,setShowFiles}) => {
     }
 
     useEffect(() => {
-        if(!EditMode) UploadingFolders.current.style.visibility="hidden";
-        else UploadingFolders.current.style.visibility="visible";
+        if(UploadingFolders.current != null){
+            if(!EditMode) UploadingFolders.current.style.visibility="hidden";
+            else UploadingFolders.current.style.visibility="visible";
+        }
     }, [EditMode])
 
   return (
