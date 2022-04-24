@@ -66,6 +66,11 @@ const AdminFormFile = ({title,file}) => {
             <input type="file" name="file" id="file" className='custom-file-input' onChange={(e)=>{changeTitle(e)}}/>
         </div>  
 
+        <div className='sectionLink'>
+          <label> קובץ לינק</label>
+          <input id="input-link" name="href" value={currentFile !== null ? currentFile.href : ""} onChange={(e)=>changeTitle(e)} />
+        </div>  
+
       <div className='sectionCategory'>
          <label>החלפת קטגורייה</label>
          <Dropdown options={options} placeholder="Select an option" id="categoryFolder" name="categoryFolder" value={currentFile != null ? currentFile.categoryFolder : ""}  onChange={(e) =>{changeDropDown(e)}} />

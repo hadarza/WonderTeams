@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import {VscSignOut} from 'react-icons/vsc'
 
 const LogOut = () => {
     const navigate = useNavigate();
@@ -9,9 +10,10 @@ const LogOut = () => {
         navigate('/')
     }
   return (
-    <div className='div-LogOut'>
-        <button className='btn-LogOut' onClick={()=>{LogOutFunc()}}>יציאה מהמשתמש</button>
-    </div>
+    <button className='btn-LogOut' onClick={()=>{LogOutFunc()}}>
+      יציאה מהמשתמש
+      <VscSignOut/>
+    </button>
   )
 }
 

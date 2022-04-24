@@ -29,6 +29,12 @@ const LoginForm = () => {
             setShowErrorLogin(false);
             // when user successfully enter , redirect him to DashBoard page 
             setSentSuccess(true);
+            setTimeout(() => {
+                if (sentSuccess) {
+                    console.log(userDetails.Name)
+                    navigate("/DashBoard",{state:{Name: userDetails.Name, isAdmin : userDetails.isAdmin}})
+                   }
+             }, 1)
         }).catch((error) => {
             //show error message - your name/password is wrong
             setShowErrorLogin(true);
@@ -38,27 +44,10 @@ const LoginForm = () => {
       //  console.log(localStorage.getItem('isAdmin'));
       //  console.log(localStorage.getItem('NameUser'));
 
-       //  if(localStorage.getItem("NameUser") !== "" && localStorage.getItem('isAdmin') != "")
-        //   navigate("/DashBoard")
+        // if(localStorage.getItem("NameUser") !== null && localStorage.getItem('isAdmin') != null)
+          // navigate("/DashBoard")
 
     }, [])
-    
-    
-
-useEffect(() => {
-    if(localStorage.getItem("NameUser") == ""){
-        localStorage.setItem('NameUser', userDetails.Name);
-        localStorage.setItem('isAdmin', userDetails.isAdmin);
-    }
-
-    setTimeout(() => {
-        if (sentSuccess) {
-            navigate("/DashBoard")
-           }
-     }, 1)
-})
-
-
 
   return (
     <>

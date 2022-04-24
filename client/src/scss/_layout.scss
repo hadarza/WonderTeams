@@ -183,38 +183,57 @@
     flex-direction: column;
     align-items: center;
 }
+.App_army{
+    display: flex;
+}
 .dashboard{
     height:100vh;
+    width: 70rem;
     display: flex;
+}
+.filter_section{
+    border-left: 1px solid rgba(109,109,109,0.3);
+}
+.dashBoard_section{
+    flex:0.98;
 }
 
 .navbar-folders{
     flex:0.2;
     background-color:$white;
+    padding: 0.5rem;
     .Btn-ShowFolder {
-        border-bottom: 0.01rem solid rgb(0,0,0,0.2);
         @include flex;
-        padding: 1rem 1rem;
         padding-bottom: 0rem;
         box-sizing: border-box;
-       
+        border-radius: 10px;
+        margin-top: 1rem;
         width: 13rem;
-        height:4rem;
-        justify-content: space-between;
+        height:3rem;
+        justify-content: space-around;
+
         > li > a{
             text-decoration: none;
             color: black;
+           
         }
         &:hover{
             transition: all 0.3s ease-in-out;
             cursor: pointer;
-            background-color: rgb(249,253,255);
+            background-color: $purple;
+            color:white;
+            >li > a{
+                color: white;
+            }
         }
     }
 }
 .active{
-    border-right: 8px solid $purple;
-    background-color: $white;
+    color: $color_font_select_folder;
+    background-color: $select_folder;
+}
+.li_filter{
+    width:4rem;
 }
 .h2-title-watch{
     text-align: center;
@@ -264,10 +283,8 @@
     display: flex;
     flex-wrap: wrap;
     margin: 1rem;
-    padding:2rem;
     height: 100%;
-    border-radius: 20px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
 }
 
 .settings-File{
@@ -418,16 +435,16 @@
 }
 
 .Nav-DashBoard{
-    background-color: $white;
     width:100%;  
     @include flex;
     justify-content: space-around;
+    position: relative;
+    right: 1rem;
 }
 
 .name{
 @include flex;
 flex:0.5;
-width:4rem;
 }
 
 .search{
@@ -589,16 +606,6 @@ width:4rem;
         direction: ltr;
     }
 
-    .sectionCategory, .sectionNewfile , .sectionName{
-        padding:1rem;
-        width:80%;
-        display: flex;
-        
-        label{
-            width:8rem;
-            display: inline-block;
-        }
-    }
     input{
         margin-right: 1rem;
         width:13rem;
@@ -606,9 +613,21 @@ width:4rem;
         border-radius: 5px;
         border:none;
     }
-    #input-name{
+}
+
+#formAdmin>div{
+    padding:1rem;
+    width:80%;
+    display: flex;
+
+    #input-name, #input-link{
         padding-right: 0.5rem;
-        background-color: whitesmoke;
+    background-color: whitesmoke;
+    }
+    
+    label{
+        width:8rem;
+        display: inline-block;
     }
 }
 
@@ -707,26 +726,75 @@ width:4rem;
     position: relative;
 }
 
-/*Log Out div*/
-.div-LogOut{
+/*profile div*/
+.div-profile{
     position: absolute;
-    top:10vh;
-    background-color: $lighten_gray;
-    width:9rem;
-    height: 5rem;
-    border-radius: 10px;
+    top:8vh;
+    right: 10vw;
+    width:6rem;
+    height: 1rem;
     @include flex;
+    flex-direction: column;
+    background: black;
+    color:white;
+    padding: 0.5rem;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    &:hover{
+        color: white;
+        background:rgba(0, 0, 0, 0.8);
+
+        .dropdown li > a{
+            color:white;
+        }
+    }
+    .dropdown{
+        padding: 0;
+        width: 100%;
+    }
+    .dropdown li{
+        list-style-type: none;
+        width: 100%;
+        font-size: 1.2rem;
+       @include flex;
+
+        >a{
+            color:white;
+            text-decoration: none;
+        }
+
+    }
 }
+.div-profile:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid black;
+    right: 7px;
+    top: -20px;
+    &:hover{
+        border-bottom: 10px solid white;
+
+    }
+  }
 
 .btn-LogOut{
-
-    font-size: .8em;
-    padding:0.5rem;
-    letter-spacing: 1px;
+    border: none;
     transition: opacity .45s;
     -webkit-transition: opacity .35s;
 
     &:hover{
         cursor: pointer;
     }
+}
+
+/*Hebet href*/
+.href_hebet{
+    text-decoration: none;
+    color: black;
 }

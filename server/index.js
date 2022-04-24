@@ -20,7 +20,13 @@ mongoose.connect(process.env.DB_CONNECT,{ useNewUrlParser: true, useUnifiedTopol
       else console.log("mongdb is connected");
       }
   )
-  
+
+  mongoose.connection.once('open', () => {
+    gfs = new mongoose.mongo.GridFSBucket(mongoose.connection.db, {
+      bucketName: 'uploads'
+    });
+  });
+
 app.use(express.json())
 app.use(cors());
 app.use(methodOverride('_method'))

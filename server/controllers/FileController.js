@@ -13,7 +13,7 @@ const LoadFiles = async (req,res)=>{
   const FilterByCategory = async (req,res)=>{
     try{
       console.log("params "+ req.params['Name']);
-      const result = await FileShow.find({Name: req.params['Name']})
+      const result = await FileShow.find({Category: req.params['Name']})
       return res.send(result);
     }catch(err){
       return res.status(400).send("failed to load data..")

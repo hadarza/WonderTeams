@@ -1,12 +1,9 @@
 import {React,useContext,useRef,useState,useEffect} from 'react'
 import {images} from '../../constants'
 import {BiSearch} from 'react-icons/bi'
-import {AiOutlineDown} from 'react-icons/ai'
 import { userContext } from './DashBoard';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import LogOut from '../LogOut/LogOut';
-
 
 const NavDashBoard = ({ShowFiles,setShowFiles}) => {
     const navigate = useNavigate();
@@ -55,13 +52,7 @@ const NavDashBoard = ({ShowFiles,setShowFiles}) => {
 
   return (
     <div className='Nav-DashBoard'>
-        <div className='name'>
-            <img className='img-profile' src={images.Person} alt="Image-Person"/>
-            <h5>{localStorage.getItem('NameUser')}</h5>
-            <AiOutlineDown className='down' onClick={() =>{setSeeLogOut(!SeeLogOut)}}/>
-            {SeeLogOut && <LogOut/>}
-
-        </div>
+       
         <div className='search'>
             <input className='input-search' type="text" placeholder='חפש קובץ...'  value={searchText} onChange={(e)=>{setsearchText(e.currentTarget.value)}} />
             <BiSearch className='search-icon' onClick={()=>{searchByName()}}/>

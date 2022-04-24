@@ -10,8 +10,10 @@ import ArraysString from './Components/Animate/ArraysString';
 import AdminUpdateFile from './Components/Admin/AdminUpdateFile';
 import AdminUploadFile from './Components/Admin/AdminUploadFile';import 'codemirror/keymap/sublime';
 import './Components/Animate/monkai.css'
-import BlogArrays from './Components/Animate/BlogArrays';
-import {Data} from '../src/Components/Animate/ArrayDB'
+import BlogArrays from './Components/Animate/StringsArrays/BlogArrays';
+import FuncCreating from './Components/Animate/FuncCreating/FuncCreating';
+
+import {Data} from './Components/Animate/StringsArrays/ArrayDB'
 function App() {
 
   useEffect(() => {
@@ -32,7 +34,8 @@ function App() {
         <Route exact path='/AdminUpdateFile' element={<AdminUpdateFile/>}/>
         <Route exact path='/AdminUploadFile' element={<AdminUploadFile/>}/>
         <Route exact path='/ArraysString' element={<ArraysString/>}/>
-        <Route exact path='/BlogArrays' element={<BlogArrays i={0} j={3} steps={3} max={Data.Intro.length}/>}/>
+        <Route exact path='/BlogArrays' element={<BlogArrays i={0} j={3} steps={3}/>}/>
+        <Route exact path='/Func' element={<FuncCreating i={0} j={3} steps={3}/>}/>
 
         
       </Routes>

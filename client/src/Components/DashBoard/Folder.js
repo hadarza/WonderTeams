@@ -22,9 +22,7 @@ const Folder = ({title,category,href,link}) => {
   }
 
   const ErrorOnFile = () =>{
-    console.log(setErrorPage)
     setErrorPage(true)
-    console.log(ErrorPage)
   }
 
   const editFolder = (folder)=>{
@@ -34,20 +32,19 @@ const Folder = ({title,category,href,link}) => {
   }
   return (
     <div className='folder'>
-      {console.log(href + " " + title + " "+ category + " "+ link)}
       <BiDotsVerticalRounded className='settings-File' onClick={()=>{ToggleNavBarOptions()}}/>
       {(localStorage.getItem("isAdmin") && EditMode) ? <FiEdit2 className='editBtn' onClick={()=>{editFolder(Folder)}}/> : ""}
       <div className='NavBar-settings'>
         {ErrorToggle ?( 
           <>
-            <a href={images.TryPPTX} className="download-option" target="_blank" download>להורדה</a>
+            <a href={Folder.Link} className="download-option" target="_blank" download>להורדה</a>
             <ul>
               <li onClick={()=>{ErrorOnFile()}}><BiErrorCircle/> דווח על שגיאה</li>
             </ul> 
           </>
         ):""}
       </div>              
-        <a href={href}>
+        <a href={Folder.hrefFolder}>
             <img src={images.File} alt={title}/>  
         </a>
 
