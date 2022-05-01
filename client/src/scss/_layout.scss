@@ -161,7 +161,6 @@
     }
 }
 .btnSubmit{
-    padding: 1rem 2rem;
     background-color: $purple;
     color:white;
     border-radius: 15px;
@@ -175,6 +174,21 @@
         color:black;
         background-color: $purple_hover;
         cursor: pointer;
+    }
+}
+.padding-2{
+    padding:1rem 2rem;
+}
+
+.btnSubmit.not-active{
+    color:black;
+    background-color: $lighten_gray;
+    &:hover{
+        background-color: $lighten_gray !important;
+        cursor: auto;
+        box-shadow: none;
+
+
     }
 }
 
@@ -301,6 +315,9 @@
     background-color: rgb(246,246,246);
     border-radius: 15px;
     @include flex;
+    &:hover{
+        cursor: pointer;
+    }
     >ul{
         list-style-type: none;
         padding: 0;
@@ -320,9 +337,24 @@
 
 .editBtn
 {
-    position: relative;
+    position: absolute;
     top: 2rem;
-    left: 1rem;
+    right: 0.5rem;
+    &:hover{
+        cursor: pointer;
+    }
+}
+.delete-folder{
+    position: absolute;
+    top: 4rem;
+    right: 0.5rem;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.icons{
+    position: relative;
 }
 /*error form*/
 .error-Form{
@@ -582,6 +614,9 @@ flex:0.5;
     width: 85%;
     text-align: center;
     padding: 0.5rem 0rem;
+    &:hover{
+        cursor: pointer;
+    }
 }
 
 .hidden{
@@ -797,4 +832,17 @@ flex:0.5;
 .href_hebet{
     text-decoration: none;
     color: black;
+}
+
+.notFound-div{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    top: 5rem;
+
+    >img{
+        width: 25rem;
+    }
 }

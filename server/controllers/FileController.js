@@ -12,7 +12,6 @@ const LoadFiles = async (req,res)=>{
   // filter file by category
   const FilterByCategory = async (req,res)=>{
     try{
-      console.log("params "+ req.params['Name']);
       const result = await FileShow.find({Category: req.params['Name']})
       return res.send(result);
     }catch(err){
@@ -31,9 +30,32 @@ const LoadFiles = async (req,res)=>{
       }
   }
 
+const deleteFile = async (req,res)=>{
+  try{
+    //check here
+    let result = await FileShow.deleteOne({Name: req.params.fileName})
+    return res.status(200).send("remove success")
+    }
+    catch(err){
+      return res.status(400).send("not found - UX UI NOT FOUND")
+    }
+}
 
+const IsExistFile = async (req,res)=>{
+  try{
+    //check here
+    let result = await FileShow.findOne({Name: req.params.fileName})
+    if(result) return res.status(200).send(true)
+    return res.status(200).send(false)
+    }
+    catch(err){
+      return res.status(400).send(false)
+    }
+}
 module.exports={
     LoadFiles,
     FilterByCategory,
-    SearchFileByName
+    SearchFileByName,
+    deleteFile,
+    IsExistFile
 }

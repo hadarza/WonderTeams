@@ -1,25 +1,24 @@
 const router = require('express').Router();
 const FileController = require('../controllers/FileController')
-var multer  = require('multer')
-const mongoose = require('mongoose')
-const Grid = require('gridfs-stream')
 const File = require('../models/FilesPresent')
 const storage = require('../middleware/GridFS')
-const path = require('path')
-const fs = require('fs')
 const upload = storage;
 
 //upload new file
 
 router.post('/uploadFile',upload.single('file'), async(req,res) =>{
   // create a new file and save to DB
+  console.log(req.body.titleFolder)
+  console.log(req.body.hrefFolder)
+  console.log(req.body.categoryFolder)
+  console.log(req.file)
+
    const file = new File({
     Name: req.body.titleFolder,
-     href: req.body.href,
+     href: req.body.hrefFolder,
      Category: req.body.categoryFolder,
-     Link: req.file.filename
+      Link: req.file.filename
  });
-
 
   try{
     const savedFile = await file.save();
@@ -36,38 +35,38 @@ router.post('/uploadFile',upload.single('file'), async(req,res) =>{
 })
 
 // update exist file
-router.post('/downloadFile', (req,res)=>{
- // gfs.find({filename: req.body.link}).toArray((err, files) => {
-    // Check if files
- //   res.status(200).send(files.filename);
-    // if (!files || files.length === 0) {
-    //   return res.status(404).json({
-    //     err: 'No files exist'
-    //   });
-   // }
-   // console.log(files[0].filename)
-    // if(files){
-    //   const readstream = gfs.createReadStream({filename: files.filename});
-    //   readstream.pipe(res);
-    // }
-
-  //   // Files exist
-  //   return res.json(files);
-  // });
-   // Read output to browser
-  // const readstream = gfs.createReadStream(req.body.href);
-  // readstream.pipe(res);
-
-  // on('error', function(error) {
-  //   res.status(400).send(error)
-  // }).
-  // on('finish', function() {
-  //   console.log('download done!');
-  //   res.status(200).send("find!!")
-
- // });
-
- //})
+router.get('/downloadFile/:filename', (req,res)=>{
+  gfs.find({ filename: req.params.filename }).toArray((err, files) => {
+    if (!files[0] || files.length === 0) {
+      return res.status(200).json({
+        success: false,
+        message: "No files available",
+      });
+    }
+    gfs.openDownloadStreamByName(req.params.filename).pipe(res);
+  });
 })
+
+
+// delete link (chunks DB)
+router.delete('/deleteLink/:filename', (req,res)=>{
+  // remove from files.chunks and uploads.files
+  gfs.find({ filename: req.params.filename }).toArray((err, files) => {
+    if (!files[0] || files.length === 0) {
+      return res.status(200).json({
+        success: false,
+        message: "No files available",
+      });
+    }else{
+      gfs.delete(files[0]._id);
+    }
+  });
+})
+
+// delete file
+router.delete('/deleteFile/:fileName', FileController.deleteFile)
+
+// check if filename is exist
+router.get('/CheckExist/:fileName',FileController.IsExistFile)
 
 module.exports = router;

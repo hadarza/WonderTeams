@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@uiw/react-codemirror": "^4.5.3",
     "axios": "^0.26.1",
+    "file-saver": "^2.0.5",
     "framer": "^2.1.1",
     "framer-motion": "^6.2.9",
     "interweave": "^13.0.0",

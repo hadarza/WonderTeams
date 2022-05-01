@@ -22,7 +22,7 @@ export const Data={
         Main:"פונקציה (מקבלת ערך ומחזירה ערך)",
         Info:"פונקציה שמקבלת ערך מקבלת כפרמטר משתנה כלשהו ומחזירה ערך אחר (יתכן אחרי חישוב כלשהו)",
         ActualData: `var x = myFunction(4,3) \n function myFunction(a,b){ \n return a*b \n}`,
-        code:`<p>var x = myFunction(4,3) <br/> function myFunction(a,b){ <br/> reutnr a*b </br>}</p>`
+        code:`<p>var x = myFunction(4,3) <br/> function myFunction(a,b){ <br/> return a*b </br>}</p>`
      },
      {
         Main:"פונקציה שנקראת על ידי אירוע",

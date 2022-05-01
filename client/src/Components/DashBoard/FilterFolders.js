@@ -1,19 +1,7 @@
-import React,{useState} from 'react'
-import axios from 'axios'
+import React from 'react'
 import { BsFolder } from 'react-icons/bs';
 
-const FilterFolders = ({ShowFiles,setShowFiles}) => {
-    const [activeSubject, setactiveSubject] = useState('Animate');
-    
-    const ShowOnlyCategory = (category) =>{
-        axios.get(`http://localhost:5000/api/DashBoard/${category}`)
-        .then((res) => {
-            console.log(res.data)
-            setShowFiles(res.data)
-          }).catch((error) => {
-            console.log(error);
-        })
-    }
+const FilterFolders = ({activeSubject,setactiveSubject,ShowOnlyCategory}) => {
 
     return (
     <div className="navbar-folders">

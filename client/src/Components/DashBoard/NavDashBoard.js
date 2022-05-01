@@ -29,11 +29,11 @@ const NavDashBoard = ({ShowFiles,setShowFiles}) => {
 
     const searchByName = ()=>{
         //search by name file in our DB
+        console.log(searchText)
         axios.post("http://localhost:5000/api/DashBoard/search",{searchText})
         .then((res) => {
             setShowFiles(res.data)
           }).catch((error) => {
-            //show error message - your name/password is wrong
             console.log(error);
         })
     }

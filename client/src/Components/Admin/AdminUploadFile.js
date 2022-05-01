@@ -5,7 +5,12 @@ const AdminUploadFile = () => {
   return (
     <AdminFormFile
     title="יצירת קובץ חדש"
-    file= {null}
+    fileInfo= {{
+      titleFolder : "",
+      categoryFolder : "Animate", // default category
+      hrefFolder : "",
+      file: ""
+    }}
    />
   )
 }

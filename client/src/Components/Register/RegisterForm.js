@@ -91,7 +91,7 @@ useEffect(() => {
             <p className='errorMsg'>{errors.Unit?.message}</p>
             {ShowErrorLogin && <p>לצערנו כבר קיים שם משתמש בשם זה, בחר שם אחר</p>}
         </div>
-        <input className="btnSubmit" type="submit" value="הירשם"/>
+        <input className="btnSubmit padding-2" type="submit" value="הירשם"/>
 
     </form>
     </>

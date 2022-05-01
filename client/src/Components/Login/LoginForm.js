@@ -18,7 +18,7 @@ const LoginForm = () => {
     }})
     const [sentSuccess,setSentSuccess] = useState(false);
 
-    const sendLoginPostRequest =async (sendingData) =>{
+    const sendLoginPostRequest = async (sendingData) =>{
        await axios.post("http://localhost:5000/api/user/login",{sendingData})
         .then((res) => {
             setUserDetails({
@@ -30,25 +30,15 @@ const LoginForm = () => {
             // when user successfully enter , redirect him to DashBoard page 
             setSentSuccess(true);
             setTimeout(() => {
-                if (sentSuccess) {
-                    console.log(userDetails.Name)
-                    navigate("/DashBoard",{state:{Name: userDetails.Name, isAdmin : userDetails.isAdmin}})
-                   }
+                localStorage.setItem("Name",sendingData.Name)
+                localStorage.setItem("isAdmin",res.data.isAdmin)
+                navigate("/DashBoard",{state:{Name: sendingData.Name, isAdmin : res.data.isAdmin}})
              }, 1)
         }).catch((error) => {
             //show error message - your name/password is wrong
             setShowErrorLogin(true);
         })
     }
-    useEffect(() => {
-      //  console.log(localStorage.getItem('isAdmin'));
-      //  console.log(localStorage.getItem('NameUser'));
-
-        // if(localStorage.getItem("NameUser") !== null && localStorage.getItem('isAdmin') != null)
-          // navigate("/DashBoard")
-
-    }, [])
-
   return (
     <>
     <TitleAndInfoForm 
@@ -90,7 +80,7 @@ const LoginForm = () => {
             {ShowErrorLogin ? <p>שם משתמש/הסיסמה שגוייה</p> : ""}
         </div>
         
-        <input className="btnSubmit" type="submit" value="התחבר"/>
+        <input className="btnSubmit padding-2" type="submit" value="התחבר"/>
 
     </form>
     </>

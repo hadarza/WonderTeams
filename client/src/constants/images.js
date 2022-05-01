@@ -4,10 +4,10 @@ import backgroundLogin from '../Assets/Images/backgroundLoginRegister.png'
 import Hebet from '../Assets/Images/Hebet.png'
 import Person from '../Assets/Images/person.png'
 import WonderTeam from '../Assets/Images/WonderTeamPng.png'
-import TryPPTX from '../Assets/Try.pptx'
 import previous from '../Assets/Images/prev.png'
 import next from '../Assets/Images/next.png'
 import Blog from '../Assets/Images/blog.jpg'
+import notFoundFolders from '../Assets/Images/notFound.png'
 export default {
     background,
     File,
@@ -15,8 +15,8 @@ export default {
     Hebet,
     Person,
     WonderTeam,
-    TryPPTX,
     previous,
     next,
-    Blog
+    Blog,
+    notFoundFolders
 }
