@@ -58,12 +58,12 @@ const BlogClipBoard = ({i,j,steps,max,Data}) => {
 
                 {max > 3 && (
                 <>
-                <img src={images.next} className="next-btn" ref={nextBtn} onClick={()=>{
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                    setIndex({StartIndex: Indexs.StartIndex+steps, EndIndex:Indexs.EndIndex+steps})}}/>
-                 <img src={images.previous} className="prev-btn" ref={prevBtn} onClick={()=>{
-                     window.scrollTo({ top: 0, behavior: 'smooth' });
-                    setIndex({StartIndex: Indexs.StartIndex-steps, EndIndex:Indexs.EndIndex-steps})}}/>
+                    <img src={images.next} className="next-btn" ref={nextBtn} onClick={()=>{
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        setIndex({StartIndex: Indexs.StartIndex+steps, EndIndex:Indexs.EndIndex+steps})}}/>
+                    <img src={images.previous} className="prev-btn" ref={prevBtn} onClick={()=>{
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        setIndex({StartIndex: Indexs.StartIndex-steps, EndIndex:Indexs.EndIndex-steps})}}/>
                 </>
     
                 )}

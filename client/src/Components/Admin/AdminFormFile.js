@@ -7,11 +7,11 @@ const AdminFormFile = ({title,fileInfo}) => {
   const refInputs = useRef([])
   /* check if user enter exist name for file and check the extension of file - muse be PDF */
     const [currentFile, setcurrentFile] = useState(fileInfo);
+    const [ErrorExistName, setErrorExistName] = useState(true)
+    const [ClassBtnSubmit, setClassBtnSubmit] = useState("btnSubmit not-active")
     const options = [
-        'Animate', 'Storyline', 'Web','Unity'
-      ];
-      const [ErrorExistName, setErrorExistName] = useState(true)
-      const [ClassBtnSubmit, setClassBtnSubmit] = useState("btnSubmit not-active")
+      'Animate', 'Web'
+    ];
 
     const changeTitle = e =>{
         const {name,value} = e.currentTarget;
@@ -21,17 +21,14 @@ const AdminFormFile = ({title,fileInfo}) => {
           if(value != ""){
             axios.get(`http://localhost:5000/api/File/CheckExist/${value}`)
               .then((res) => {
-                console.log(res.data)
                 if(res.data == true){
-                  // don't let user to send the data - alert "file name is exist"
-                  setErrorExistName(true)
+                  setErrorExistName(true)// don't let user to send the data - alert "file name is exist"
                 }else setErrorExistName(false)
               }).catch((error) => {
                   console.log(error)
               })
           }
         }
-        console.log(name)
           setcurrentFile(prevState => ({
             ...prevState,    
             [name]: value
@@ -71,11 +68,9 @@ const AdminFormFile = ({title,fileInfo}) => {
           })
          .then((res) => {
            console.log(res.data)
-
          }).catch((error) => {
              console.log(error)
          })
-        
      }
 
   return (

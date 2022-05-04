@@ -7,10 +7,8 @@ import {AppWrap} from '../../wrapper/index'
 import { userDetailsContext } from '../../UserDetailsProvide';
 
 const RegisterForm = () => {
-
     const [userDetails, setUserDetails] = useContext(userDetailsContext);
     const [ShowErrorLogin, setShowErrorLogin] = useState(false)
-    const [IsLogIn,setIsLogIn] = useState(false);
     const navigate = useNavigate();
     const {register,handleSubmit, formState:{errors}} = useForm({defaultValues:{
         Name: '',
@@ -29,7 +27,6 @@ const RegisterForm = () => {
                 Name: res.data.Name,
                 isAdmin: res.data.isAdmin
             });
-            console.log(userDetails)
             setShowErrorLogin(false);
             // when user successfully enter , redirect him to DashBoard page 
             setSentSuccess(true);
@@ -49,7 +46,6 @@ useEffect(() => {
            }
      }, 1)
 })
-
 
   return (
     <>

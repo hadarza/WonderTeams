@@ -1,9 +1,5 @@
 import { motion } from "framer-motion"
 
-const HoverFunc =()=>{
-    
-}
-
  const Object = ({name,index}) => (
    <div className="wrap-array-object">
     <h3 className="h3-array-object">{index}</h3>

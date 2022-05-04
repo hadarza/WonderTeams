@@ -14,8 +14,8 @@ const NavProfile = () => {
     <div className='div-profile'>
          <ul class="dropdown">
             <li>
-            <a href="/" onClick={()=>{LogOutFunc()}}>יציאה</a>
-            <VscSignOut/>
+                <a href="/" onClick={()=>{LogOutFunc()}}>יציאה</a>
+                <VscSignOut/>
             </li>
         </ul>
     </div>
