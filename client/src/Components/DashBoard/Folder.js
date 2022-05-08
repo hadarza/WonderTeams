@@ -74,7 +74,7 @@ const Folder = ({title,category,href,link}) => {
         <BiDotsVerticalRounded className='settings-File' onClick={()=>{ToggleNavBarOptions()}}/>
         {(localStorage.getItem("isAdmin") && EditMode) ? 
         <>
-          <FiEdit2 className='editBtn' onClick={()=>{editFolder(Folder)}}/>
+          {/* <FiEdit2 className='editBtn' onClick={()=>{editFolder(Folder)}}/> */}
           <AiOutlineDelete className='delete-folder' onClick={()=>{
             deleteLink(Folder.Link)
             deleteFile(Folder.titleFolder)
