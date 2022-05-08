@@ -2,7 +2,7 @@ import React,{useState,useEffect,useRef} from 'react'
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import {axiosInstance} from '../../config';
-
+import axios from 'axios'
 const AdminFormFile = ({title,fileInfo}) => {
   const refInputs = useRef([])
   /* check if user enter exist name for file and check the extension of file - muse be PDF */
@@ -61,7 +61,7 @@ const AdminFormFile = ({title,fileInfo}) => {
         const form = document.querySelector("#formAdmin")
         const formData = new FormData(form);
         formData.append("categoryFolder",currentFile.categoryFolder)
-         axiosInstance.post(`File/${action}File`,formData, {
+         axiosInstance.post(`/File/${action}File`,formData, {
             headers: {
               "Content-Type": "multipart/form-data",
             },
