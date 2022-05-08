@@ -50,10 +50,11 @@ const AdminFormFile = ({title,fileInfo}) => {
       // check if all field are full
       useEffect(() => {
         if(currentFile != null){
-            if(isAllFieldFull() && !ErrorExistName) setClassBtnSubmit("btnSubmit")
+            if(isAllFieldFull()) setClassBtnSubmit("btnSubmit")
         else setClassBtnSubmit("btnSubmit not-active")
+        console.log(isAllFieldFull)
         }
-      }, [currentFile.titleFolder, currentFile.categoryFolder,currentFile.hrefFolder,currentFile.file,ErrorExistName])
+      }, [currentFile.titleFolder, currentFile.categoryFolder,currentFile.hrefFolder,currentFile.file])
       
       // at post file 
       const postChangeFile = () =>{
@@ -61,7 +62,7 @@ const AdminFormFile = ({title,fileInfo}) => {
         const form = document.querySelector("#formAdmin")
         const formData = new FormData(form);
         formData.append("categoryFolder",currentFile.categoryFolder)
-          axios.post(`https://teamswonder.herokuapp.com/api/File/${action}File`,formData, {
+          axiosInstance.post(`/File/${action}File`,formData, {
             headers: {
               "Content-Type": "multipart/form-data",
             },
@@ -97,10 +98,10 @@ const AdminFormFile = ({title,fileInfo}) => {
           <label>החלפת קטגורייה</label>
           <Dropdown options={options} placeholder="Select an option" id="categoryFolder" name="categoryFolder" ref={el => refInputs.current[3] = el} value={currentFile.categoryFolder}  onChange={(e) =>{changeDropDown(e)}} />
         </div>
-          {ErrorExistName && <p>החלף שם לקובץ. קובץ בשם זה קיים</p>}
+          {/* {ErrorExistName && <p>החלף שם לקובץ. קובץ בשם זה קיים</p>} */}
           <input className={ClassBtnSubmit} type="submit" value="צור קובץ" onClick={(e)=>{
 
-            if(isAllFieldFull() && !ErrorExistName){
+            if(isAllFieldFull()){
               postChangeFile(e);
               e.preventDefault()
             }
