@@ -1,6 +1,5 @@
 import { createSlice,createAsyncThunk } from '@reduxjs/toolkit'
-import {FOLDER_ALL_URL} from '../../URLAPI/Url'
-import axios from 'axios';
+import {axiosInstance} from '../../../config';
 const initialState = {
     activeSubject: '',
     EditMode: false,
@@ -8,16 +7,16 @@ const initialState = {
     status: 'idle' // 'idle' | 'loading' | 'succeeded' | 'failed
 }
 export const fetchFolders = createAsyncThunk('/api/DashBoard/',async () =>{
-    const response = await axios.get(FOLDER_ALL_URL)
+    const response = await axiosInstance.get('/DashBoard')
     return [...response.data];
 })
 export const fetchFoldersByCategory = createAsyncThunk('/api/DashBoard/:Name',async (Name) =>{
-    const response = await axios.get(`http://localhost:5000/api/DashBoard/${Name}`)
+    const response = await axiosInstance.get(`/DashBoard/${Name}`)
     return [...response.data];
 })
 
 export const FetchFoldersByName = createAsyncThunk('/api/DashBoard/search',async (searchText) =>{
-    const response  = await axios.post("http://localhost:5000/api/DashBoard/search",{searchText})
+    const response  = await axiosInstance.post("/DashBoard/search",{searchText})
     return [...response.data]
 })
 

@@ -2,7 +2,7 @@ import React,{useDebugValue, useState,useContext,useEffect} from 'react'
 import {useForm} from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import TitleAndInfoForm from '../TitleAndInfoForm'
-import axios from 'axios'
+import {axiosInstance} from '../../config'
 import {BsEyeFill,BsEyeSlashFill} from 'react-icons/bs'
 import AppWrap from '../../wrapper/AppWrap'
 import { userDetailsContext } from '../../UserDetailsProvide';
@@ -19,7 +19,7 @@ const LoginForm = () => {
     const [sentSuccess,setSentSuccess] = useState(false);
 
     const sendLoginPostRequest = async (sendingData) =>{
-       await axios.post("http://localhost:5000/api/user/login",{sendingData})
+       await axiosInstance.post("/user/login",{sendingData})
         .then((res) => {
             setUserDetails({
                 ...userDetails,

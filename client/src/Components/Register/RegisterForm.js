@@ -1,7 +1,7 @@
 import React,{useState,useEffect,useContext} from 'react'
 import {useForm} from 'react-hook-form'
 import TitleAndInfoForm from '../TitleAndInfoForm'
-import axios from 'axios'
+import {axiosInstance} from '../../config'
 import { useNavigate } from "react-router-dom";
 import {AppWrap} from '../../wrapper/index'
 import { userDetailsContext } from '../../UserDetailsProvide';
@@ -20,7 +20,7 @@ const RegisterForm = () => {
 
 
     const sendRegisterPostRequest = (Sendingdata) =>{
-         axios.post("http://localhost:5000/api/user/register",{Sendingdata})
+        axiosInstance.post("/user/register",{Sendingdata})
         .then(res => { 
             setUserDetails({
                 ...userDetails,
@@ -52,7 +52,7 @@ useEffect(() => {
     <TitleAndInfoForm 
         title="הרשמה"
         info="כבר רשום? התחבר!"
-        href="http://localhost:3000/"
+        href="/"
     />
     <form className='form-login' onSubmit={handleSubmit((data) => {
         sendRegisterPostRequest(data);

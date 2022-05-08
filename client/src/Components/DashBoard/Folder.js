@@ -5,7 +5,7 @@ import {BiDotsVerticalRounded, BiErrorCircle} from 'react-icons/bi'
 import { Link, useNavigate } from 'react-router-dom'
 import {FiEdit2} from 'react-icons/fi'
 import {AiOutlineDelete} from 'react-icons/ai'
-import axios from 'axios';
+import {axiosInstance} from '../../config';
 import FileSaver from 'file-saver';
 import { fetchFoldersByCategory,IsEditMode,getActiveSubject,fetchFolders } from '../../Redux/features/DashBoard/DashBoardSlice'
 
@@ -38,7 +38,7 @@ const Folder = ({title,category,href,link}) => {
   }
 
   const GetHrefFromChunk = (link)=>{
-    axios.get('http://localhost:5000/api/File/downloadFile/'+link ,{responseType: "blob"})
+    axiosInstance.get('/File/downloadFile/'+link ,{responseType: "blob"})
     .then((res) => {
       console.log(res)
       FileSaver.saveAs(res.data, `${link}.pdf`);
@@ -49,7 +49,7 @@ const Folder = ({title,category,href,link}) => {
   }
   const deleteLink = (fileName) =>{
     // delete file
-    axios.delete('http://localhost:5000/api/File/deleteLink/'+fileName)
+    axiosInstance.delete('/File/deleteLink/'+fileName)
     .then((res) => {
       console.log(res)
     }).catch((error) => {
@@ -59,7 +59,7 @@ const Folder = ({title,category,href,link}) => {
   
   const deleteFile = (fileName) =>{
     // delete file
-    axios.delete('http://localhost:5000/api/File/deleteFile/'+fileName)
+    axiosInstance.delete('/File/deleteFile/'+fileName)
     .then((res) => {
       console.log(res)
     }).catch((error) => {

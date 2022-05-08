@@ -1,7 +1,7 @@
 import React,{useState,useEffect,useRef} from 'react'
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import axios from 'axios';
+import {axiosInstance} from '../../config';
 
 const AdminFormFile = ({title,fileInfo}) => {
   const refInputs = useRef([])
@@ -19,7 +19,7 @@ const AdminFormFile = ({title,fileInfo}) => {
         if(name == "titleFolder"){
           // check if there is already a file by this name
           if(value != ""){
-            axios.get(`http://localhost:5000/api/File/CheckExist/${value}`)
+            axiosInstance.get(`/File/CheckExist/${value}`)
               .then((res) => {
                 if(res.data == true){
                   setErrorExistName(true)// don't let user to send the data - alert "file name is exist"
@@ -61,7 +61,7 @@ const AdminFormFile = ({title,fileInfo}) => {
         const form = document.querySelector("#formAdmin")
         const formData = new FormData(form);
         formData.append("categoryFolder",currentFile.categoryFolder)
-        await axios.post(`http://localhost:5000/api/File/${action}File`,formData, {
+        await axiosInstance.post(`/File/${action}File`,formData, {
             headers: {
               "Content-Type": "multipart/form-data",
             },

@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const Grid = require('gridfs-stream')
-
+const path = require('path')
 const methodOverride = require('method-override')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
@@ -36,5 +36,10 @@ app.use('/api/user',User)
 app.use('/api/DashBoard',DashBoard)
 app.use('/api/File',File)
 
+app.use(express.static(path.join(__dirname, "/client/build")));
 
-app.listen(5000, ()=>{console.log('Server is up and running')})
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
+});
+
+app.listen(process.env.PORT || 5000, ()=>{console.log('Server is up and running')})
