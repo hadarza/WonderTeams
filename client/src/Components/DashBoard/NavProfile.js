@@ -1,5 +1,4 @@
 import React from 'react'
-import LogOut from '../LogOut/LogOut'
 import {VscSignOut} from 'react-icons/vsc'
 import { useNavigate } from 'react-router-dom'
 const NavProfile = () => {

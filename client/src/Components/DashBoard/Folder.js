@@ -1,12 +1,13 @@
-import React,{useState,useContext,useEffect} from 'react'
+import React,{useState} from 'react'
+import {useSelector,useDispatch} from 'react-redux'
 import {images} from '../../constants'
 import {BiDotsVerticalRounded, BiErrorCircle} from 'react-icons/bi'
-import {userContext} from './DashBoard'
 import { Link, useNavigate } from 'react-router-dom'
 import {FiEdit2} from 'react-icons/fi'
 import {AiOutlineDelete} from 'react-icons/ai'
 import axios from 'axios';
 import FileSaver from 'file-saver';
+import { fetchFoldersByCategory,IsEditMode,getActiveSubject,fetchFolders } from '../../Redux/features/DashBoard/DashBoardSlice'
 
 
 const Folder = ({title,category,href,link}) => {
@@ -18,14 +19,17 @@ const Folder = ({title,category,href,link}) => {
     hrefFolder : href,
     Link: link
   })
-  const {ErrorPage,setErrorPage,EditMode,activeSubject,ShowOnlyCategory,SetInfo} = useContext(userContext)
+  const dispatch = useDispatch()
+  const EditMode = useSelector(IsEditMode)
+  const activeSubject = useSelector(getActiveSubject)
+
   const ToggleNavBarOptions = () =>{
     //toggle navBarOptions
     setErrorToggle(!ErrorToggle)
   }
 
   const ErrorOnFile = () =>{
-    setErrorPage(true)
+    //setErrorPage(true)
   }
 
   const editFolder = (folder)=>{
@@ -74,9 +78,10 @@ const Folder = ({title,category,href,link}) => {
           <AiOutlineDelete className='delete-folder' onClick={()=>{
             deleteLink(Folder.Link)
             deleteFile(Folder.titleFolder)
+
             if(activeSubject == "")
-                SetInfo();
-             else ShowOnlyCategory(activeSubject)
+              dispatch(fetchFolders())
+             else dispatch(fetchFoldersByCategory(activeSubject))
             }}/>
         </>
         : ""}

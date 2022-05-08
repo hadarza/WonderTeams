@@ -1,4 +1,4 @@
-import React,{useContext,useRef} from 'react'
+import React,{useRef,useState} from 'react'
 import {useForm} from 'react-hook-form'
 import TitleAndInfoForm from '../TitleAndInfoForm'
 import {userContext} from '../DashBoard/DashBoard'
@@ -8,7 +8,7 @@ import Xbtn from '../Xbtn'
 const ErrorFile = () => {
     const FormRef = useRef(null);
 
-    const {ErrorPage,setErrorPage} = useContext(userContext)
+    const [ErrorPage, setErrorPage] = useState(false)
     const {register,handleSubmit, formState:{errors}} = useForm({defaultValues:{
         firstName: '',
         Phone:'',

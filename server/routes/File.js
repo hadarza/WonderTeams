@@ -8,10 +8,6 @@ const upload = storage;
 
 router.post('/uploadFile',upload.single('file'), async(req,res) =>{
   // create a new file and save to DB
-  console.log(req.body.titleFolder)
-  console.log(req.body.hrefFolder)
-  console.log(req.body.categoryFolder)
-  console.log(req.file)
 
    const file = new File({
     Name: req.body.titleFolder,

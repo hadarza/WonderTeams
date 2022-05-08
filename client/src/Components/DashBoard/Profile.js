@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import {images} from '../../constants'
-import {AiOutlineCaretDown,AiOutlineCaretUp} from 'react-icons/ai'
+import {AiOutlineCaretDown} from 'react-icons/ai'
 import NavProfile from './NavProfile'
 const Profile = () => {
     const [SeeLogOut, setSeeLogOut] = useState(false)
