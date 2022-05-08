@@ -33,7 +33,7 @@ const DashBoard = () => {
         <div className='dashboard'>
             <div className="folders-ToShow">
                 <div className="box-folders">
-                  {ListsFolders.length == 0 && <NotFoundFolder/>}
+                  {(ListsFolders.length == 0 && statusFolders == "succeed") && <NotFoundFolder/>}
                   {ListsFolders.map((object,key)=>(
                     <Folder key={key} title={object.Name} category={object.Category} href={object.href} link={object.Link}/>
                   ))}
