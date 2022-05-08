@@ -61,7 +61,7 @@ const AdminFormFile = ({title,fileInfo}) => {
         const form = document.querySelector("#formAdmin")
         const formData = new FormData(form);
         formData.append("categoryFolder",currentFile.categoryFolder)
-         axiosInstance.post(`/File/${action}File`,formData, {
+         axiosInstance.post(`File/${action}File`,formData, {
             headers: {
               "Content-Type": "multipart/form-data",
             },
