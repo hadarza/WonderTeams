@@ -56,12 +56,12 @@ const AdminFormFile = ({title,fileInfo}) => {
       }, [currentFile.titleFolder, currentFile.categoryFolder,currentFile.hrefFolder,currentFile.file,ErrorExistName])
       
       // at post file 
-      const postChangeFile = () =>{
+      const postChangeFile = async () =>{
         const action = fileInfo.titleFolder !== "" ? "update" : "upload";
         const form = document.querySelector("#formAdmin")
         const formData = new FormData(form);
         formData.append("categoryFolder",currentFile.categoryFolder)
-         axiosInstance.post(`/File/${action}File`,formData, {
+         await axios.post(`https://teamswonder.herokuapp.com/api/File/${action}File`,formData, {
             headers: {
               "Content-Type": "multipart/form-data",
             },
